@@ -1,0 +1,154 @@
+
+
+<!DOCTYPE html>
+<!--
+    Il tempo visualizzato dev'essere nel formato HH:MM:SS (ore minuti secondi).
+    Aggiungere un pulsante "intermedio" che se premuto fa un freeze del cronometro per 5 secondi (in modo che l'utente possa visualizzare il tempo intermedio),
+    passati i quali deve tornare visibile il cronometro normalmente. Durante 'intermedio il conteggio non si deve interrompere.
+-->
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #container {
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .row {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .col {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #btnContainer {
+                margin-top: 30px;
+            }
+
+            #startBtn {
+                background-color: blue;
+                margin-right: 50px;
+            }
+
+            #intermedioBtn {
+                background-color: red;
+            }
+
+            input[type="button"] {
+                padding: 10px 20px;
+                color: white;
+                border: none;
+                border-radius: 10px;
+            }
+
+            input[type="button"]:hover {
+                transform: scale(1.1);
+                transition: transform 0.2s;
+            }
+
+            #startBtn:hover {
+                background-color: darkblue;
+            }
+
+            #stopBtn:hover {
+                background-color: darkred;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="row">
+                <h1 id="hh">00</h1>
+                :
+                <h1 id="mm">00</h1>
+                :
+                <h1 id="ss">00</h1>
+            </div>
+            <div class="row" id="btnContainer">
+                <input type="button" value="START" id="startBtn" onclick="start();">
+                <input type="button" value="INTERMEDIO" id="intermedioBtn" onclick="intermedio();">
+            </div>
+        </div>
+    </body>
+    <script>
+        const startBtn = document.getElementById("startBtn");
+        const intermedioBtn = document.getElementById("intermedioBtn");
+        const hhElem = document.getElementById("hh");
+        const mmElem = document.getElementById("mm");
+        const ssElem = document.getElementById("ss");
+        let intervalSId;
+        let timeoutId;
+        let counterS = 0;
+        let counterM = 0;
+        let counterH = 0;
+        intermedioBtn.disabled = true;
+
+
+        function start() {
+            console.log("start");
+            startBtn.disabled = true;
+            intermedioBtn.disabled = false;
+            console.log(counterS);
+            intervalSId = setInterval(()=> {
+                counterS++;
+                console.log(counterS);
+                if (counterS === 60) {
+                    counterS = 0;
+                    counterM++;
+                    ssElem.innerHTML = 0;
+                }
+                if (counterM === 60) {
+                    counterM = 0;
+                    counterH++;
+                    mmElem.innerHTML = counterM;
+                }
+                if (counterS < 10) {
+                    ssElem.innerHTML = "0" + String(counterS);
+                } else {
+                    ssElem.innerHTML = counterS;
+                }
+                if (counterM < 10) {
+                        mmElem.innerHTML = "0" + String(counterM);
+                } else {
+                    mmElem.innerHTML = counterM;
+                }
+                if (counterH < 10) {
+                        hhElem.innerHTML = "0" + String(counterH);
+                } else {
+                    hhElem.innerHTML = counterM;
+                }
+            }, 1)
+        }
+
+
+        function intermedio() {
+            console.log("intermedio");
+            clearInterval(intervalSId);
+            let timeoutId = setTimeout( ()=> {
+                counterS += 5;
+                start();
+            }, 5000)
+            startBtn.disabled = false;
+            intermedioBtn.disabled = true;
+        }
+    </script>
+</html>
+

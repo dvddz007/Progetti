@@ -1,0 +1,25 @@
+copiare dal default.js del sito la password ('U2FsdGVkX1/JEKDXgPl2RqtEgj0LMdp8/Q1FQelH7whIP49sq+WvNOeNjjXwmdrl') e decriptarla con questa funzione su https://www.jdoodle.com/execute-nodejs-online.
+
+
+const CryptoJS = require('crypto-js');
+
+function AES_decrypt(message = '', key = '') {
+  var code = CryptoJS.AES.decrypt(message, key);
+  var decryptedMessage = code.toString(CryptoJS.enc.Utf8);
+  return decryptedMessage;
+}
+
+
+var s3cr37 = 'ML4czctKUzigEeuR';
+var encryptedPassword = 'U2FsdGVkX1/JEKDXgPl2RqtEgj0LMdp8/Q1FQelH7whIP49sq+WvNOeNjjXwmdrl';
+
+var decryptedPassword = AES_decrypt(encryptedPassword, s3cr37);
+
+console.log(decryptedPassword);
+
+
+Username = admin
+Password = v3ry_l337_p455w0rd_!
+
+
+Flag = flag{d0n7_u53_cl13n7_51d3_ch3ck5!!}

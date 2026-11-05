@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #container {
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+            }
+
+            #pulsanti {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #pulsanti > * {
+                color: white;
+                border: none;
+                border-radius: 20px;
+                padding: 15px;
+                margin: 0 2px;
+            }
+
+            #avanti {
+                background-color: red;
+            }
+
+            #avanti:hover {
+                background-color: darkred;
+                transform: scale(1.1);
+                transition: transform 0.25s;
+            }
+
+            #indietro {
+                background-color: blue;
+            }
+
+            #indietro:hover {
+                background-color: darkblue;
+                transform: scale(1.1);
+                transition: transform 0.25s;
+            }
+
+            #start {
+                background-color: orange;
+            }
+
+            #start:hover {
+                background-color: darkorange;
+                transform: scale(1.1);
+                transition: transform 0.25s;
+            }
+
+            #stop {
+                background-color: green;
+            }
+
+            #stop:hover {
+                background-color: darkgreen;
+                transform: scale(1.1);
+                transition: transform 0.25s;
+            }
+
+            #immagine {
+                width: 250px;
+                height: 250px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h2 id="imgCount">Immagine n.1</h2>
+            <div id="immagini">
+                <img id="immagine" src="img/0.png">
+            </div>
+            <div id="pulsanti">
+                <input id="avanti" type="button" value="AVANTI">
+                <input id="indietro" type="button" value="INDIETRO">
+                <input id="start" type="button" value="START">
+                <input id="stop" type="button" value="STOP">
+            </div>
+        </div>
+    </body>
+    <script>
+        const avantiBtn = document.getElementById("avanti");
+        const indietroBtn = document.getElementById("indietro");
+        const startBtn = document.getElementById("start");
+        const stopBtn = document.getElementById("stop");
+        const imgElem = document.getElementById("immagine");
+        const imgCount = document.getElementById("imgCount");
+        
+        const immagini = ["1.png", "2.png", "3.png", "4.png", "5.png"];
+        stopBtn.disabled = true;
+        let i = 0;
+        let timerID;
+
+        function avanti() {
+            i++;
+            if (i > immagini.length) {
+                i = 0;
+            }
+            imgElem.src = `img/${i}.png`;
+            imgCount.innerHTML = `Immagine n.${i + 1}`;
+        }
+
+        avantiBtn.addEventListener("click", avanti);
+
+        indietroBtn.addEventListener("click", ()=> {
+            i--;
+            if (i < 0) {
+                i = immagini.length - 1;
+            }
+            imgElem.src = `img/${i}.png`;
+            imgCount.innerHTML = `Immagine n.${i + 1}`;
+        });
+
+        startBtn.addEventListener("click", ()=> {
+            stopBtn.disabled = false;
+            startBtn.disabled = true;
+            timerID = setInterval(avanti, 3000);
+        });
+
+        stopBtn.addEventListener("click", ()=> {
+            stopBtn.disabled = true;
+            startBtn.disabled = false;
+            clearInterval(timerID);
+        });
+    </script>
+</html>

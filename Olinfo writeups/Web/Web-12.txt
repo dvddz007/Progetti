@@ -1,0 +1,25 @@
+Importare oltre alla libreria "requests", la libreria bs4 da beautifulsoup che ci permette di scaricare il codice html della pagina.
+con la funzione beautifulsoup convertire l'html in un oggetto e successivamente usare la funzione find_all('p') per trovare tutti i tag <p> della pagina ed stamparli.
+
+
+Script:
+
+import requests
+from bs4 import BeautifulSoup
+
+url = "http://web-12.challs.olicyber.it/"
+
+response = requests.get(url)
+
+# utilizza il parser html che organizza il codice html nella struttura base
+tag = BeautifulSoup(response.text, 'html.parser')
+
+# prende il contenuto di tutti i tag <p> e li aggiunge nella lista
+lista = tag.find_all('p')
+
+# stampa solo il secondo indice (tag <p>) della lista
+print(lista[1].text)
+
+
+
+Flag = flag{7h3_14ngu4g3_0f_7h3_w3b}

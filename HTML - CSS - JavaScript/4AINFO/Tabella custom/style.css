@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, serif;
+    margin: 50px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: -25px;
+}
+
+.table {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th {
+    padding: 10px;
+    color: white;
+    background-color: black;
+}
+
+td {
+    padding: 15px;
+}
+
+td, th {
+    border-bottom: 1px solid black;
+}
+
+th:first-of-type, td:first-of-type {
+    background-color: yellow;
+    color: black;
+}
+
+/* tutti i figli dispari di .table (ignorando quelli con la classe .ignore) hanno lo sfondo grigio */
+.table tr:nth-child(odd):not(.ignore) {
+    background-color: grey;
+}
+
+/* la pseudo classe nth-child(odd) ha una specificità maggiore rispetto ad :hover (0,0,2,1) e (0,0,1,1),
+ quindi viene impostato lo sfondo grigio. bisogna impostare hover per entrambe le regole. */
+/* la specificità aumenta in base alla precisione. elemento -> classe/pseudo classe -> id -> inline. */
+.table tr:nth-child(odd):not(.ignore):hover,
+.table tr:nth-child(even):hover {
+    background-color: yellow;
+}

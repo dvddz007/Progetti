@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+
+    <style>
+
+        .col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .box {
+            display: flex;
+            height: 100px;
+            width: 100px;
+            border: 2px solid;
+            font-weight: bold;
+            justify-content: center;
+            align-items: center;
+            font-size: 75px;
+        }
+        
+        .b-collapse {
+            border-collapse: collapse;
+        }
+
+        .x {
+            color: red;
+        }
+
+        .o {
+            color: blue;
+        }
+    </style>
+
+    <body>
+        <div class="col">
+            <div class="row b-collapse">
+                <div class="box"><span class="x">X</span></div>
+                <div class="box"><span class="o">O</span></div>
+                <div class="box"><span class="x">X</span></div>
+            </div>
+            <div class="row b-collapse">
+                <div class="box"><span class="o">O</span></div>
+                <div class="box"><span class="o">O</span></div>
+                <div class="box"><span class="x">X</span></div>
+            </div>
+            <div class="row b-collapse">
+                <div class="box"><span class="x">X</span></div>
+                <div class="box"><span class="x">X</span></div>
+                <div class="box"><span class="o">O</span></div>
+            </div>
+        </div>
+    </body>
+</html>

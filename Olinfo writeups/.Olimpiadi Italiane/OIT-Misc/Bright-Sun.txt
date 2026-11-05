@@ -1,0 +1,4 @@
+impostare luminosità ed esposizione a -100.
+
+
+Flag = flag{h1dd3n_by_7h3_5un}

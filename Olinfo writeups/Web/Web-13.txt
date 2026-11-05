@@ -1,0 +1,21 @@
+Scaricare la pagina web, convertirlo in un parser html, creare una stringa vuota che conterrà ciascuno dei caratteri evidenziati, cercare con un ciclo for ogni tag <span> con la classe "red" e concatenarla nella variabile flag. Una volta usciti dal ciclo stampare la flag nel suo formato.
+
+
+Script:
+
+import requests
+from bs4 import BeautifulSoup
+
+risposta = requests.get("http://web-13.challs.olicyber.it/")
+tag = BeautifulSoup(risposta.text, 'html.parser')
+
+flag = ""
+
+# per ogni tag <span> che abbia la classe "red"
+for span in tag.find_all('span', class_='red'):
+    flag = flag + span.text
+
+print("flag{" + flag + "}")
+
+
+Flag = flag{donotrecommenddoingthisbyhand}

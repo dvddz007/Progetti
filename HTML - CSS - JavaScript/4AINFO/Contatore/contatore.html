@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Contatore</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <section class="container">
+            <div class="content">
+                <h1 id="counter">0</h1>
+                <div class="options">
+                    <div class="min">
+                        <span>MINIMO:</span>
+                        <input type="number" id="minimo" value="" onchange="setStart()">
+                    </div>
+                    <div class="max">
+                        <span>MASSIMO:</span>
+                        <input type="number" id="massimo" value="">
+                    </div>
+                </div>
+                <div class="buttons">
+                    <input type="button" id="minus" onclick="update(-1)" value="-1">
+                    <input type="button" id="reset" onclick="reset()" value="R">
+                    <input type="button" id="plus" onclick="update(1)" value="+1">
+                </div>
+            </div>
+        </section>
+    </body>
+    <script src="script.js"></script>
+</html>

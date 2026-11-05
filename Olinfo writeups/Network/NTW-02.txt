@@ -1,0 +1,3 @@
+andare al 4 frame in source mac address (Ethernet II -> Source: mac-address) / lenght byte (in Data)
+
+Flag = flag{26:0e:ad:ef:c6:65/63}

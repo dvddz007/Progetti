@@ -1,0 +1,117 @@
+:root {
+    --gradient-bg: 135deg, #d9d9d9, #8c8c8c;
+    --handle-bg: 140, 52%, 55%;
+    --handle-bg-hover: 140, 52%, 45%;
+    --reset-bg: 38, 100%, 55%;
+    --reset-bg-hover: 38, 100%, 45%;
+    --start-bg: 210, 100%, 50%;
+    --start-bg-hover: 210, 100%, 40%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background: linear-gradient(var(--gradient-bg));
+}
+
+.content, #tries-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#tries-box {
+    display: none;
+    margin-top: 30px;
+}
+
+.score-box {
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+#game-section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+}
+
+#handle-btn {
+    border: none;
+    border-radius: 5px;
+    background-color: hsl(var(--handle-bg));
+}
+
+#handle-btn:hover {
+    background-color: hsl(var(--handle-bg-hover));
+}
+
+#reset-btn {
+    background-color: hsl(var(--reset-bg));
+}
+
+#reset-btn:hover {
+    background-color: hsl(var(--reset-bg-hover));
+}
+
+#start {
+    color: white;
+    background-color: hsl(var(--start-bg));
+}
+
+#start:hover {
+    background-color: hsl(var(--start-bg-hover));
+}
+
+.number-row, .choices {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.number-row {
+    justify-content: space-between;
+}
+
+.number-row input[type="number"] {
+    width: 70%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #2980b9;
+    outline: none; /* rimuove il 'bordo' blu che ha di default l'input. */
+    /* l'outline é una cornice superiore al bordo che si trova in un altro livello grafico. */
+    transition: 0.3s;
+}
+
+.number-row input[type="number"]:focus {
+    border-color: #6dd5fa;
+}
+
+
+.number-row input[type="button"] {
+    width: 25%;
+}
+
+.button {
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 8px 10px;
+}
+
+input[type='button']:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}

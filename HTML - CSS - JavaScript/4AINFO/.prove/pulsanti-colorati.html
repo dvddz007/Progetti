@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pulsanti colorati</title>
+    </head>
+    <style>
+        .row {
+            flex-direction: row;
+        }
+
+        .container {
+            height: 100vh; /* 1vh = 1% della parte visiva della pagina */
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container > * {
+            height: 200px;
+            width: 200px;
+            border: 1px solid;
+            border-radius: 50%;
+            margin: 20px;
+        }
+    </style>
+    <body>
+        <div class="container row">
+            <div id="b1" onclick="fixedColor(this, 'red')" onmouseover="newColor(this, 'red')" onmouseleave="oldColor(this, 'white')" class="row"></div>
+            <div id="b2" onclick="fixedColor(this, 'blue')" onmouseover="newColor(this, 'blue')" onmouseleave="oldColor(this, 'white')" class="row"></div>
+            <div id="b3" onclick="fixedColor(this, 'green')" onmouseover="newColor(this, 'green')" onmouseleave="oldColor(this, 'white')" class="row"></div>
+            <div id="b4" onclick="fixedColor(this, 'yellow')" onmouseover="newColor(this, 'yellow')" onmouseleave="oldColor(this, 'white')" class="row"></div>
+        </div>
+    </body>
+    <script>
+        // const old_b1 = document.getElementById("b1");
+        // const old_b2 = document.getElementById("b2");
+        // const old_b3 = document.getElementById("b3");
+        // const old_b4 = document.getElementById("b4");
+        function newColor(elemento, color) {
+            elemento.style.backgroundColor = color;
+        }
+
+        function oldColor(elemento, color) {
+            elemento.style.backgroundColor = color;
+        }
+
+        function fixedColor(elemento) {
+            if (!elemento.onmouseleave) {
+                /*
+                elemento.onmouseleave = "oldColor(this, 'white')";
+                onmouseleave si aspetta una funzione, non una stringa.
+                sintassi: object.onmouseleave = function(){myScript};
+
+                elemento.onmouseleave = oldColor(this, 'white');
+                anche assegnandogli una funzione in questo modo non funziona.
+                javascript esegue subito la funzione e non avendo un return, diventa un void e gli assegna undefined.
+
+                elemento.onmouseleave = function() {
+                    oldColor(elemento, 'white');
+                così la funzione viene eseguita solo allo scatenarsi dell'evento.
+                */
+                elemento.onmouseleave = function() {
+                    oldColor(elemento, 'white');
+                };
+            } else {
+                elemento.onmouseleave = null;
+            }
+        }
+    </script>
+</html>

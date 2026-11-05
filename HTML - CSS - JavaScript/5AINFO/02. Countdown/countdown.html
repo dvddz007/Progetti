@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+    Realizzare un pagina web contenente:
+        - un input number, valore iniziale 10
+        - un <h1> inizialmente vuoto
+        - un pulsante START
+        - un pulsante ABORT
+
+        L'utente inserisce un numero nell'input, quando preme il pulsante START deve partire il conto ala rovescia,
+        ovvero il tag <h1> deve mostrare il numero inserito nell'input number e decrementarlo ogni secondo.
+        Quando il countdown arriva a zero , mostrare un messaggio "BOOM" (oppure un'immagine con esplosione) sempre nell'<h1>.
+        Durante il countdown disabilitare il pulsante START (settare l'attributo disabled a true). Quando il countdown termina riabilitare il pulsante start.
+        In qualsiasi istante, la pressione del tasto ABORT termina il countdown e mostra sull'<h1> il messaggio "TERMINATO DALL'UTENTE'.
+-->
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Countdown</title>
+        <style>
+            #container {
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .row {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="row">
+                <h1 id="shownNumber"></h1>
+            </div>
+            <div class="row">
+                <input type="number" id="inputNumber">
+                <input type="button" id="start" onclick="start()" value="START">
+                <input type="button" id="abort" onclick="abort()" value="ABORT">
+            </div>
+        </div>
+    </body>
+    <script>
+        const inputNumberElem = document.getElementById("inputNumber");
+        const shownNumberElem = document.getElementById("shownNumber");
+        const startBtnElem = document.getElementById("start");
+        let timer;
+        let intervallo;
+
+        function start() {
+            if (!inputNumberElem.value || inputNumberElem.value < 0) {
+                shownNumberElem.innerHTML = "Il numero inserito non è valido."
+                return;
+            }
+            console.log("Timer started.");
+            startBtnElem.disabled = true;
+            let i = parseInt(inputNumberElem.value);
+            shownNumberElem.innerHTML = i;
+
+            timer = setTimeout( ()=> {
+                clearInterval(intervallo);
+                shownNumberElem.innerHTML = "BOOM!";
+                startBtnElem.disabled = false;
+                clearTimeout(timer);
+                console.log("Timer finished.")
+            }, parseInt(inputNumberElem.value) * 1000);
+
+            intervallo = setInterval( ()=> {
+                i--;
+                shownNumberElem.innerHTML = i;
+            }, 1000)
+        }
+
+
+        function abort() {
+            console.log("Timer aborted.");
+            clearTimeout(timer);
+            clearInterval(intervallo);
+            startBtnElem.disabled = false;
+            shownNumberElem.innerHTML = "Terminato dall'utente"
+        }
+    </script>
+</html>

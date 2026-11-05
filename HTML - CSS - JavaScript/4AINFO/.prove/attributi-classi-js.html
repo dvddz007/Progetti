@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Attributo className e classList</title>
+        <style>
+            .container {
+                height: 100vh;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .box {
+                width: 200px;
+                height: 200px;
+                border: 1px solid black;
+            }
+
+            .red {
+                background-color: red;
+            }
+
+            .green {
+                background-color: green;
+            }
+
+            .blue {
+                background-color: blue;
+            }
+
+            #box2 {
+                margin: 0 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div id="box1" class="box white" onclick="changeColor(this, 'red');"></div>
+            <div id="box2" class="box white" onclick="changeColor(this, 'green');"></div>
+            <div id="box3" class="box white" onclick="changeColor(this, 'blue');"></div>
+        </div>
+    </body>
+    <script>
+        /*
+        Aggiunge una classe ad un elemento
+        elem.classList.add(<string>);
+
+        Rimuove una classe da un elemento
+        elem.classList.remove(<string>);
+
+        Aggiunge una classe ad un elemento SE esso non contiene già quella classe,
+        altrimenti la rimuove.
+        elem.classList.toggle(<string>);
+
+        Controlla se un elemento contiene una classe. Restituisce un booleano.
+        elem.classList.contains(<string>);        
+        */
+
+        const box1 = document.getElementById("box1");
+        const box2 = document.getElementById("box2");
+        const box3 = document.getElementById("box3");
+        
+        // box1.className = "yellow";
+        // sovrascrive le classi dell'elemento.
+
+        function changeColor(element, color) {
+            element.classList.toggle(color);
+        }
+    </script>
+</html>

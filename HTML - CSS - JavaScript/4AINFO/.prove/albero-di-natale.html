@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+    <meta charset="UTF-8">
+    <title>Albero di natale</title>
+    <style>
+        body {
+            background-color: lightgreen;
+        }
+        .stella {
+            width: 50px;
+            height: 50px;
+            border: 1px solid orange;
+            border-radius: 10px;
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            border: 1px solid green;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container > div {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .yellowBg {
+            background-color: yellow;
+        }
+
+        .brownBg {
+            background-color: brown;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="riga">
+                <div class="stella yellowBg"></div>
+            </div>
+            <div class="riga">
+                <div class="box" onclick="accendi(this)"></div>
+                <div class="box" onclick="accendi(this)"></div>
+            </div>
+            <div class="riga">
+                <div class="box" onclick="accendi(this)"></div>
+                <div class="box" onclick="accendi(this)"></div>
+                <div class="box" onclick="accendi(this)"></div>
+            </div>
+            <div class="riga">
+                <div class="box" onclick="accendi(this)"></div>
+                <div class="box" onclick="accendi(this)"></div>
+                <div class="box" onclick="accendi(this)"></div>
+                <div class="box" onclick="accendi(this)"></div>
+            </div>
+            <div class="riga">
+                <div class="box brownBg"></div>
+            </div>
+        </div>
+    </body>
+    <script>
+        function accendi(elemento) {
+            elemento.classList.toggle("yellowBg");
+        }
+    </script>
+</html>

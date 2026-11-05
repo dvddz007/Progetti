@@ -1,0 +1,72 @@
+/* la pseudoclasse :root ha specificità maggiore rispetto all'oggetto HTML */
+:root {
+    --bg: #161625;
+}
+
+/* pseudoelemento che si attiva all'evidenziamento di un testo */
+::selection {
+    background-color: darkslateblue;
+    color: white;
+}
+
+body {
+    font-family: Helvetica, serif;
+    margin: 0 40px 40px 40px;
+    background-color: var(--bg);
+    color: #86aaf9;
+}
+
+main, header {
+    text-align: center;
+}
+
+p {
+    font-size: 1.1em;
+    /* 110% */
+}
+
+h1 {
+    margin-top: 40px;
+}
+
+hr {
+    margin-top: 200px;
+}
+
+#header {
+    position: static;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg);
+}
+
+.horiz-menu > li {
+    display: inline-block;
+    padding: 2px;
+    border: 2px inset blue;
+    width: 200px;
+    height: 100px;
+    background-color: darkblue;
+}
+
+.horiz-menu > li:hover {
+    background-color: #BA8E23;
+    color: blue;
+    border: 2px outset;
+    transition: background-color 0.5s;
+    transform: scale(1.05);
+}
+
+.horiz-menu > li > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #EBBE4D;
+    text-decoration: none;
+}
+
+.horiz-menu > li:hover > a {
+    color: blue;
+}

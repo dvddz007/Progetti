@@ -1,0 +1,3 @@
+usare il comando "objdump -h nomefile" per elencare le sezioni di un file. la sezione 25 è quella contenente la flag. usare un altro comando per vedere il contenuto di una sezione specifica, "objdump -s -j .super-secret-section nomefile".
+
+Flag = flag{d03lvn4i}

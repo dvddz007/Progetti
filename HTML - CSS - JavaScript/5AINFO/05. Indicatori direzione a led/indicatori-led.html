@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+    06. Indicatori direzione a led
+    
+    Si vuol realizzare la sequenza di animazione di un indicatore di direzione a led.
+    Realizzare una pagina web con una striscia di 10 led, ogni led è un rettangolo con i bordi leggermente arrotondati con bordo nero grande 100x50 pixel.
+    Per simulare l'accensione di ogni led cambiare lo sfondo in giallo (bianco se spento).
+    Aggiungere un pulsante che faccia partire/fermare la simulazione dell'indicatore di direzione.
+    Il pulsante è unico: quando è in simulazione ha la scritta STOP, quando la simulazione è ferma ha la scritta START.
+    Simulare l'indicatore in questo modo:
+    i led si accendono in sequenza uno alla volta intervallati da una pausa di 50millisecondi (è molto veloce)
+    quando si accende anche l'ultimo led della striscia bisogna spegnere tutti i led per 1 secondo
+    poi si ricomincia la sequenza.
+-->
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #container {
+                width: 100%;
+                height: 100dvh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #container > * {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .strisce {
+                gap: 10px;
+                margin-bottom: 100px;
+            }
+
+            .striscia {
+                width: 100px;
+                height: 50px;
+                border: 1px solid black;
+                border-radius: 5px;
+                background-color: white;
+            }
+
+            .acceso {
+                background-color: yellow;
+            }
+
+            #pulsante {
+                padding: 15px;
+                border: none;
+                border-radius: 10px;
+                color: white;
+                background-color: blue;
+            }
+
+            #pulsante:hover {
+                background-color: darkblue;
+                transform: scale(1.2);
+                transition: 0.05s transform;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="strisce">
+                <div class="striscia"></div>
+                <div class="striscia"></div>
+                <div class="striscia"></div>
+                <div class="striscia"></div>
+                <div class="striscia"></div>
+                <div class="striscia"></div>
+                <div class="striscia"></div>
+                <div class="striscia"></div>
+                <div class="striscia"></div>
+                <div class="striscia"></div>
+            </div>
+            <div>
+                <input id="pulsante" type="button" value="START">
+            </div>
+        </div>
+    </body>
+    <script>
+        const strisceElems = document.querySelectorAll(".striscia");
+        const pulsanteElem = document.getElementById("pulsante");
+        let timer50ms;
+        let timer1s;
+        let i = 0;
+        let started = true;
+
+        pulsanteElem.addEventListener("click", ()=> {
+            if (!started) {
+                pulsanteElem.value = "START";
+                console.log("stop");
+                clearInterval(timer1s);
+                clearInterval(timer50ms);
+                started = true;
+            } else {
+                console.log("start");
+                pulsanteElem.value = "STOP";
+                started = false;
+                timer1s = setInterval(()=> {
+                    console.log("1s");
+                    strisceElems.forEach((striscia)=> {
+                        striscia.classList.remove("acceso");
+                    });
+                    started = false;
+                    i = 0;
+                }, 1000);
+                timer50ms = setInterval(()=> {
+                    console.log("50ms");
+                    if (i < strisceElems.length){
+                        strisceElems[i].classList.add("acceso");
+                        i++;
+                    }
+                }, 50);
+            }
+        });
+    </script>
+</html>

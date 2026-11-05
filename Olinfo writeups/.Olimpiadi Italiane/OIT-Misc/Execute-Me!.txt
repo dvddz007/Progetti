@@ -1,0 +1,3 @@
+controllare l'header del file con HxD ed eseguirlo su linux, trattandosi di un file elf. con binwalk bisogna cercare file nascosti "binwalk execute-me" per trovare due zip. estrarre gli zip con "dd if=execute-me bs=1 skip=13232 of=hidden_full.zip" ed estrarlo con "unzip hidden_full.zip" per trovare un file mp3. usare di nuovo binwalk sul file mp3 "binwalk listen-to-me.mp3" ed estrarre lo zip contenuto anche in questo file "dd if=listen-to-me.mp3 bs=1 skip=41973 of=second.zip", "unzip second.zip". l'output sarà un file png che se scansionato con "zbarimg scan-me.png" rivelerà la flag.
+
+Flag = flag{b1nw4lk_i5_ur_fr13nd===}

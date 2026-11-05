@@ -1,0 +1,3 @@
+usare il comando ldd con l'opzione --unused per visualizzare le librerie non utilizzate.
+
+Flag = flag{1d8db559}

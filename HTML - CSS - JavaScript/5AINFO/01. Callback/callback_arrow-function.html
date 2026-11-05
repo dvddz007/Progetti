@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test Callback e Arrow Function</title>
+    </head>
+    <body>
+        <script>
+            function f(str, func) {
+                func(str);
+            }
+
+            f("Hello World!", alert);
+            f("Chiamo la callback!", (str) => console.log(str));
+        </script>
+    </body>
+</html>

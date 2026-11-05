@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!--
+    Realizzare una pagina HTML con 3 div con dentro rispettivamente "1", "2", e "3". Un tasto "start" posizionato al centro sotto i div.
+    Quando l'utente clicca su start bisogna generare una sequenza random di 5 numeri compresi tra 1 e 3
+    e mostrarli all'utente (in apposito div o paragrafo) per 4 secondi.
+    Passati i 4 secondi l'utente ha 5 secondi per riprodurre la sequenza cliccando sui div.
+    Se riproduce correttamente la sequenza generare un messaggio di successo altrimenti di fallimento.
+-->
+    <html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Segui la sequenza</title>
+    </head>
+    <style>
+        :root {
+            --bodyBg: #080D18;
+            --containerBg: #111C2E;
+            --containerBorder: #26354B;
+            --textColor: #E7EDF7;
+            --box1bg: red;
+            --box1hover: #cc0000;
+            --box1active: #990000;
+            --box2bg: blue;
+            --box2hover: #0000cc;
+            --box2active: #000099;
+            --box3bg: green;
+            --box3hover: #006600;
+            --box3active: #004d00;
+            --startBtnBg: #0095ff;
+            --startBtnHover: #07c;
+            --startBtnActive: #0064bd;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            height: 100dvh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: var(--bodyBg);
+            color: var(--textColor);
+        }
+
+        #container {
+            width: 750px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            background: var(--containerBg);
+            border: 1px solid var(--containerBorder);
+            border-radius: 10px;
+        }
+
+        #sequenzaBox {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 20px;
+        }        
+
+        #sequenza {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            font-size: 25px;
+            gap: 8px;
+        }
+
+        #sequenza.hidden {
+            visibility: hidden;
+        }
+
+        #combinazioneBox {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        #combinazioneBox > .box {
+            border: 1px solid transparent;
+            padding: 25px 30px;
+            border-radius: 5px;
+            color: #ffffff;
+        }
+
+        #combinazioneBox .box:nth-child(1) {
+            background-color: var(--box1bg);
+        }
+
+        #combinazioneBox .box:nth-child(1):hover {
+            background-color: var(--box1hover);
+        }
+
+        #combinazioneBox .box:nth-child(1):active {
+            background-color: var(--box1active);
+        }
+
+        #combinazioneBox .box:nth-child(2) {
+            background-color: var(--box2bg);
+        }
+
+        #combinazioneBox .box:nth-child(2):hover {
+            background-color: var(--box2hover);
+        }
+
+        #combinazioneBox .box:nth-child(2):active {
+            background-color: var(--box2active);
+        }
+
+        #combinazioneBox .box:nth-child(3) {
+            background-color: var(--box3bg);
+        }
+
+        #combinazioneBox .box:nth-child(3):hover {
+            background-color: var(--box3hover);
+        }
+
+        #combinazioneBox .box:nth-child(3):active {
+            background-color: var(--box3active);
+        }
+
+        #startBtn {
+            background-color: var(--startBtnBg);
+            border: 1px solid transparent;
+            padding: 15px 18px;
+            border-radius: 5px;
+            color: #ffffff;
+        }
+
+        #startBtn.hidden {
+            visibility: hidden;
+        }
+
+        #startBtn:hover {
+            background-color: var(--startBtnHover);
+        }
+
+        #startBtn:active {
+            background-color: var(--startBtnActive);
+        }
+
+        .vinto, .corretto {
+            color: green;
+        }
+
+        .perso, .errato {
+            color: red;
+        }
+    </style>
+    <body>
+        <div id="container">
+            <div id="sequenzaBox">
+                <p id="testo">Clicca per iniziare</p>
+                <div id="sequenza" class="hidden">
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                </div>
+            </div>
+            <div id="combinazioneBox">
+                <div class="box">1</div>
+                <div class="box">2</div>
+                <div class="box">3</div>
+            </div>
+            <input type="button" id="startBtn" value="Start">
+        </div>
+    </body>
+    <script defer>
+        const sequenzaBoxElem = document.getElementById("sequenzaBox");
+        const testo = document.getElementById("testo");
+        const sequenzaElem = document.getElementById("sequenza");
+        const startBtnElem = document.getElementById("startBtn");
+        const boxElems = document.querySelectorAll(".box");
+        // const sequenzaElemArr = sequenzaElem.children;   HTMLCollection != Array
+        // HTMLCollection non supporta il foreach
+        const sequenzaElemArr = Array.from(sequenzaElem.children);
+        let vinto;
+        let sequenzaDaIndovinare;
+        let timerMostra;
+        let timerIndovina;
+        let tentativiArr;
+        let puoCliccare;
+
+        function numeroCasuale(min=1, max=3) {
+            /*
+                Restituisce un numero casuale tra min e max inclusi.
+            */
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function sequenzaCasuale(max=3) {
+            /*
+                Restituisce un array contenente n numeri casuali da indovinare.
+            */
+            const arr = [];
+            for (let i=0; i<max; i++) {
+                arr.push(numeroCasuale());
+            }
+            return arr;
+        }
+
+        function salvaTentativo(elemento) {
+            /*
+                Salva nell'array tentativiArr un elemento SOLO se l'array non supera la lunghezza della sequenza.
+                // Restituisce l'elemento aggiunto all'array per debug (?).
+            */
+            if (tentativiArr.length >= sequenzaDaIndovinare.length) {
+                return;
+            }
+            tentativiArr.push(elemento);
+            //return elemento;
+            return;
+        }
+
+        function controllaVittoria() {
+            /*
+                Partendo con vinto = true.
+                Scorro simultaneamente l'array dei tentativi e la l'array dei numeri da indovinare.
+                Imposta vinto a false se i numeri sono diversi e aggiunge la classe errato al box del numero.
+                Aggiunge la classe coretto al box del numero se i numeri comparati sono uguali.
+                
+            */
+            vinto = true;
+            for (let i=0; i<sequenzaDaIndovinare.length; i++) {
+                if (sequenzaDaIndovinare[i] !== tentativiArr[i]) {
+                    vinto = false;
+                    sequenzaElemArr[i].classList.add("errato");
+                } else {
+                    sequenzaElemArr[i].classList.add("corretto");
+                }
+            }
+            //vinto = sequenzaDaIndovinare.toString() === tentativiArr.toString();
+            return;
+        }
+
+
+        boxElems.forEach((box)=> {
+            box.addEventListener("click", (event)=> {
+                if (!puoCliccare) {
+                    return;
+                }
+                console.log(`cliccato ${event.target.textContent}`);
+                salvaTentativo(Number(event.target.textContent));
+                console.log(tentativiArr);
+            });
+        });
+
+        startBtnElem.addEventListener("click", ()=> {
+            startBtnElem.classList.add("hidden");
+            // cancello i timer delle partite precedenti
+            clearTimeout(timerMostra);
+            clearTimeout(timerIndovina);
+            testo.textContent = "Ricorda la sequenza:";
+            puoCliccare = false;
+            tentativiArr = [];
+            vinto = false;
+            sequenzaDaIndovinare = sequenzaCasuale();
+            sequenzaElem.classList.remove("hidden");
+            sequenzaElem.classList.remove("vinto", "perso");
+            sequenzaElemArr.forEach((box) => {
+                box.classList.remove("corretto", "errato");
+            });
+            sequenzaElemArr.forEach((box, index)=> {
+                box.textContent = String(sequenzaDaIndovinare[index]);
+            });
+            console.log("start timer memorizzazione.")
+            timerMostra = setTimeout(()=> {
+                testo.textContent = "Riproduci la sequenza";
+                sequenzaElemArr.forEach((box) => {
+                    box.textContent = "?";
+                });
+                puoCliccare = true;
+                console.log("start timer indovino.")
+                timerIndovina = setTimeout(()=> {
+                    puoCliccare = false;
+                    controllaVittoria();
+                    sequenzaElemArr.forEach((box, index) => {
+                        box.textContent = String(sequenzaDaIndovinare[index]);
+                    });
+                    setTimeout(() => {
+                        /*
+                            Imposto un timeout di 1ms perchè l'alert è una funzione sincrona;
+                            blocca il browser nella sua funzione e non permette la visualizzazione
+                            del cambio del textContent degli elementi.
+                        */
+                        if (!vinto) {
+                            alert("Hai perso!");
+                        }
+                        else {
+                            alert("Hai vinto!");
+                        }
+                    }, 1);
+                    testo.textContent = "Gioca ancora?"
+                    startBtnElem.classList.remove("hidden");
+                }, 5000);
+            }, 4000); 
+        });
+    </script>
+</html>

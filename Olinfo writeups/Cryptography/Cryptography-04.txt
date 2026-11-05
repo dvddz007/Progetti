@@ -1,0 +1,23 @@
+creare una def che prenda come parametri due stringhe decodificate in bytes, usare un ciclo for che per ogni elemento di ciascuna stringa su cui è stata eseguita la funzione zip, che restituisce la coppia di elementi con lo stesso indice, aggiunga ad una lista vuota l'operazione xor degli elementi. restituire la lista in bytes e convertirla in unicode.
+
+
+Script:
+
+def xor(a, b):
+    risultato = []
+    for x, y in zip(a, b):
+        risultato.append(x ^ y)
+    return bytes(risultato)
+
+
+m1 = bytes.fromhex("158bbd7ca876c60530ee0e0bb2de20ef8af95bc60bdf")
+m2 = bytes.fromhex("73e7dc1bd30ef6576f883e79edaa48dcd58e6aa82aa2")
+
+risultato = xor(m1, m2)
+
+flag = risultato.decode("utf-8")
+
+print(flag)
+
+
+Flag = flag{x0R_f0r_th3_w1n!}

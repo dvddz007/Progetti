@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 17px;
+    text-align: center;
+}
+
+.es {
+    color: grey;
+    font-size: 19px;
+}
+
+#diretto p, #discendente p {
+    border: 1px solid black;
+    display: inline-block;
+    width: 50%;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------- */
+
+/* primo figlio diretto */
+#diretto > :first-child {
+    background-color: red;
+}
+
+/* seleziona l'ultimo figlio diretto del selettore indicato */
+/* esiste anche :first-of-type */
+#diretto > p:last-of-type {
+    background-color: orange;
+}
+
+/* seleziona solo i selettori <div> che siano figli diretti di #diretto e ne seleziona il primo elemento discendente */
+#diretto > div > :first-child {
+    background-color: yellow;
+}
+
+/* seleziona solo i selettori <div> che siano figli diretti di #diretto e ne seleziona l'ultimo elemento discendente */
+#diretto > div > :last-child {
+    background-color: wheat;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------- */
+
+/* tutti i selettori <p> figli e discendenti di #discendente */
+#discendente p {
+    border: 3px solid black;
+}
+
+/* l'index inizia da 1 */
+/* tutti i discendenti selettori di classe <p> con l'indice DISPARI */
+#discendente p:nth-child(odd) {
+    background-color: blue;
+}
+
+/* tutti i discendenti selettori di classe <p> con l'indice PARI */
+#discendente p:nth-child(even) {
+    background-color: lightblue;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------- */

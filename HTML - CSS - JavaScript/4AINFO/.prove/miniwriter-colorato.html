@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Miniwriter colorato</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            
+            #container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100vh;
+            }
+            
+            .opzioni {
+                margin-top: 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .counters {
+                margin-top: 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+            }
+
+            #updateButton {
+                margin: 30px 0;
+            }
+
+            .redText {
+                color: red;
+            }
+
+            .greenText {
+                color: green;
+            }
+
+            .blueText {
+                color: blue;
+            }
+
+            .blackText {
+                color: black;
+            }
+
+            .whiteText {
+                color: white;
+            }
+
+            .redBg {
+                background-color: red;
+            }
+
+            .greenBg {
+                background-color: green;
+            }
+
+            .blueBg {
+                background-color: blue;
+            }
+
+            .yellowBg {
+                background-color: yellow;
+            }
+
+            .whiteBg {
+                background-color: white;
+            }
+
+            .familyTNR {
+                font-family: 'Times New Roman', Times, serif;
+            }
+
+            .familyArial {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .familyCourierNew {
+                font-family: 'Courier New', Courier, monospace;
+            }
+
+            .familyGeorgia {
+                font-family: 'Georgia', serif;
+            }
+
+            .familyVerdana {
+                font-family: 'Verdana', sans-serif;
+            }
+
+            .size14px {
+                font-size: 14px;
+            }
+
+            .size16px {
+                font-size: 16px;
+            }
+
+            .size24px {
+                font-size: 24px;
+            }
+
+            .size32px {
+                font-size: 32px;
+            }
+
+            .size48px {
+                font-size: 48px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="opzioni">
+                <div>
+                    <span>SFONDO</span>
+                    <select id="sfondo" onchange="colorChange(this.id)">
+                        <option value="white" selected>BIANCO</option>
+                        <option value="red">ROSSO</option>
+                        <option value="green">VERDE</option>
+                        <option value="blue">BLU</option>
+                        <option value="yellow">GIALLO</option>
+                    </select>
+                </div>
+                <div>
+                    <span>TESTO</span>
+                    <select id="testo" onchange="colorChange(this.id)">
+                        <option value="black" selected>NERO</option>
+                        <option value="white">BIANCO</option>
+                        <option value="red">ROSSO</option>
+                        <option value="green">VERDE</option>
+                        <option value="blue">BLU</option>
+                    </select>
+                </div>
+                <div>
+                    <span>FAMIGLIA</span>
+                    <select id="family" onchange="fontChange(this.id)">
+                        <option value="familyArial" selected>Arial</option>
+                        <option value="familyTNR">Times New Roman</option>
+                        <option value="familyCourierNew">Courier New</option>
+                        <option value="familyGeorgia">Georgia</option>
+                        <option value="familyVerdana">Verdana</option>
+                    </select>
+                </div>
+                <div>
+                    <span>GRANDEZZA</span>
+                    <select id="size" onchange="fontChange(this.id)">
+                        <option value="14" selected>14</option>
+                        <option value="16">16</option>
+                        <option value="24">24</option>
+                        <option value="32">32</option>
+                        <option value="48">48</option>
+                    </select>
+                </div>
+            </div>
+            <input type="button" id="updateButton" value="AGGIORNA" onclick="aggiorna()">
+            <textarea id="textarea" class="whiteBg blackText familyArial size14px" rows="20" cols="50" onkeyup="aggiorna()"></textarea>
+            <div class="counters">
+                <span id="caratteri">CARATTERI: 0</span>
+                <span id="parole">PAROLE: 0</span>
+                <span id="linee">LINEE: 0</span>
+            </div>
+        </div>
+    </body>
+    <script>
+        const textareaElem = document.getElementById("textarea");
+        const sfondoElem = document.getElementById("sfondo");
+        const testoElem = document.getElementById("testo");
+        const caratteriElem = document.getElementById("caratteri");
+        const paroleElem = document.getElementById("parole");
+        const lineeElem = document.getElementById("linee");
+
+        
+        function colorChange(id) {
+            const elemValue = document.getElementById(id).value;
+            if (id === "sfondo") {
+                // rimuovo tutte le classi di sfondo colorato
+                textareaElem.classList.remove(
+                    "redBg",
+                    "greenBg",
+                    "blueBg",
+                    "yellowBg",
+                    "whiteBg"
+                );
+                textareaElem.classList.add(elemValue + "Bg");
+            } else if (id === "testo") {
+                // rimuovo tutte le classi di testo colorato
+                textareaElem.classList.remove(
+                    "redText",
+                    "greenText",
+                    "blueText",
+                    "blackText", 
+                    "whiteText"
+                );
+                textareaElem.classList.add(elemValue + "Text");
+            }
+            return;
+        }
+
+
+        function fontChange(id) {
+            const elemValue = document.getElementById(id).value;
+            if (id === "family") {
+                textareaElem.classList.remove(
+                    "familyTNR",
+                    "familyArial",
+                    "familyCourierNew",
+                    "familyGeorgia",
+                    "familyVerdana"
+                );
+                textareaElem.classList.add(elemValue);
+            } else if (id === "size") {
+                textareaElem.classList.remove(
+                    "size12px",
+                    "size16px",
+                    "size24px",
+                    "size32px",
+                    "size48px"
+                );
+                textareaElem.classList.add("size" + elemValue + "px");
+            }
+            
+        }
+
+
+        function getCaratteri(str) {
+            /*
+                Include nella conta: \n e "".
+            */
+            return str.length;
+        }
+
+
+        function getParole(str) {
+            /*
+                Rimuove tutti gli spazi dalla stringa,
+                se la stringa é vuota, restituisce 0,
+                sennó, rimuove eventuali altri spazi e restituisce la lunghezza.
+            */
+            str = str.trim();
+            // Se togliendo tutti gli spazi, la stringa é lunga 0:
+            if (str === "") {
+                return 0;
+            }
+            // Regex che si indica con /[array di valori o espressione regolare]/
+            // Rimuove tutti i caratteri "space": " ", "\n", "\t" e altri.
+            return str.split(/\s+/).length;
+        }
+
+
+        function getLinee(str) {
+            /*
+                Divido per /n, cioé, il carattere newline.
+            */
+            return str.split("\n").length;
+        }
+
+
+        function aggiorna() {
+            let testo = textareaElem.value;
+            let countCaratteri = getCaratteri(testo);
+            let countParole = getParole(testo);
+            let countLinee = getLinee(testo);
+            caratteriElem.innerHTML = "CARATTERI: " + countCaratteri;
+            paroleElem.innerHTML = "PAROLE: " + countParole;
+            lineeElem.innerHTML = "LINEE: " + countLinee;
+        }
+    </script>
+</html>

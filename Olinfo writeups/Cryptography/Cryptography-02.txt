@@ -1,0 +1,15 @@
+prendere una stringa in esadecimale e usare il metodo bytes.fromhex per convertire la stringa in binario. usare il metodo decode con il parametro "utf-8" per decodificarla attraverso l'unicode per renderla una stringa leggibile.
+
+
+Script:
+
+encoded = "666c61677b68337834646563696d616c5f63346e5f62335f41424144424142457d"
+
+byte = bytes.fromhex(encoded)
+
+flag = byte.decode("utf-8")
+
+print(flag)
+
+
+Flag = flag{h3x4decimal_c4n_b3_ABADBABE}

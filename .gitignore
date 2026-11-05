@@ -1,0 +1,25 @@
+# File generati dalla compilazione
+*.exe
+*.o
+*.obj
+
+# Cache e ambienti virtuali Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Dipendenze JavaScript
+node_modules/
+
+# Configurazioni locali di VS Code
+.vscode/
+
+# File locali con variabili d'ambiente
+.env
+.env.*
+!.env.example
+
+# File generati da Windows
+Thumbs.db
+Desktop.ini

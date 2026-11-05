@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Calcolatrice</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <section class="container">
+            <div class="content">
+                <h1 id="result">0</h1>
+                <div class="operations">
+                    <button onclick="reset()" id="reset-btn">C</button>
+                    <input type="text" id="op1" value="" placeholder="Primo operando">
+                    <select onchange="hide()" name="operations" id="operation">
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                        <option value="/">/</option>
+                        <option value="*">*</option>
+                        <option value="%">%</option>
+                        <option value="^">^</option>
+                        <option value="√">√</option>
+                    </select>
+                    <input type="text" id="op2" value="" placeholder="Secondo operando">
+                    <button onclick="calculate()" id="submit-btn">=</button>
+                </div>
+            </div>
+        </section>
+    </body>
+    <script src="script.js"></script>
+</html>

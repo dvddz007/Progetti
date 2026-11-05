@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Morra cinese</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #container {
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 50px;
+            }
+
+            #punteggio, #gioco, #scelte, #messaggio {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #punteggio {
+                width: 750px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            #puntiGiocatore, #puntiCpu {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            #opzioni {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+            }
+
+            #gioco {
+                width: 750px;
+                height: 500px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 40px;
+            }
+
+            #messaggio {
+                font-size: 25px;
+                color: red;
+            }
+
+            #giocatore {
+                color: blue;
+            }
+            
+            #cpu {
+                color:  red;
+            }
+
+            span {
+                color:  black;
+                font-size: 25px;
+            }
+
+            img {
+                width: 200px;
+                height: 200px;
+            }
+
+            #resetBtn {
+                border: none;
+                border-radius: 5px;
+                margin-top: 30px;
+                padding: 10px 15px;
+                background-color: #e74c3c;
+            }
+
+            #resetBtn:hover {
+                transform: scale(1.05);
+                transition: transform 0.2s;
+                background-color: #c0392b;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="punteggio">
+                <div id="giocatore">
+                    Giocatore 1:
+                    <br>
+                    <span id="puntiGiocatore">0</span>
+                </div>
+                <div id="cpu">
+                    CPU:
+                    <br>
+                    <span id="puntiCpu">0</span>
+                </div>
+            </div>
+            <div id="messaggio"></div>
+            <div id="gioco">
+                <img id="imgPlayer" src="img/blank.png">
+                <img id="imgCpu" src="img/blank.png">
+            </div>
+            <div id="opzioni">
+                <div id="scelte">
+                    <img src="img/rock.png" onclick="gioca('rock')">
+                    <img src="img/paper.png" onclick="gioca('paper')">
+                    <img src="img/scissors.png" onclick="gioca('scissors')">
+                </div>
+                <input type="button" id="resetBtn" value="ESCI" onclick="esci()">
+            </div>
+        </div>
+    </body>
+    <script>
+        const playerScoreElem = document.getElementById("puntiGiocatore");
+        const cpuScoreElem = document.getElementById("puntiCpu");
+        const messageElem = document.getElementById("messaggio");
+        const giocoElem = document.getElementById("gioco");
+        const imgPlayer = document.getElementById("imgPlayer");
+        const imgCpu = document.getElementById("imgCpu");
+
+        let puntiGiocatore = 0;
+        let puntiCpu = 0;
+
+        const scelte = ['rock', 'paper', 'scissors'];
+
+
+        function gioca(sceltaGiocatore) {
+            // [0, 1, 2]
+            const randomIndex = Math.floor(Math.random() * 3);
+            const sceltaCpu = scelte[randomIndex];
+
+            imgPlayer.src = `img/${sceltaGiocatore}.png`;
+            imgCpu.src = `img/${sceltaCpu}.png`;
+            imgCpu.style.transform = "scaleX(-1)"; // immagine CPU specchiata
+
+            const risultato = controllaVincitore(sceltaGiocatore, sceltaCpu);
+            if (risultato === "giocatore") {
+                puntiGiocatore++;
+                messageElem.innerHTML = "Hai vinto!";
+            }
+            else if (risultato === "cpu") {
+                puntiCpu++;
+                messageElem.innerHTML = "Hai perso!";
+            }
+            else {
+                messageElem.innerHTML = "Pareggio!";
+            }
+
+            playerScoreElem.innerHTML = puntiGiocatore;
+            cpuScoreElem.innerHTML = puntiCpu;
+        }
+
+        function controllaVincitore(player, cpu) {
+            if (player === cpu) {
+                return "pareggio";
+            }
+
+            if (player === "rock" && cpu === "scissors") {
+                return "giocatore";
+            }
+
+            if (player === "paper" && cpu === "rock") {
+                return "giocatore";
+            }
+
+            if (player === "scissors" && cpu === "paper") {
+                return "giocatore";
+            }
+
+            return "cpu";
+        }
+
+        function esci() {
+            puntiGiocatore = 0;
+            puntiCpu = 0;
+
+            playerScoreElem.innerHTML = 0;
+            cpuScoreElem.innerHTML = 0;
+            messageElem.innerHTML = "";
+            imgPlayer.src = "img/blank.png";
+            imgCpu.src = "img/blank.png";
+        }
+    </script>
+</html>

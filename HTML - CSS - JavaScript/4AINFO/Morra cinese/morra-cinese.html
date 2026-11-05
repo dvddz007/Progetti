@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Morra cinese</title>
+        <style>
+            #container {
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 50px;
+            }
+
+            #punteggio, #gioco, #scelte, #messaggio {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #opzioni {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+            }
+
+            #gioco {
+                width: 750px;
+                height: 500px;
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="punteggio">
+                <div id="giocatore1">
+                    Giocatore 1: <span id="puntiGiocatore1">0</span>
+                </div>
+                <div id="cpu">
+                    CPU: <span id="puntiCpu">0</span>
+                </div>
+            </div>
+            <div id="messaggio"></div>
+            <div id="gioco"></div>
+            <div id="opzioni">
+                <div id="scelte">
+                    <img src="img/rock.png" onclick="gioca(this.src)">
+                    <img src="img/paper.png" onclick="gioca(this.src)">
+                    <img src="img/scissor.png" onclick="gioca(this.src)">
+                </div>
+                <input type="button" id="resetBtn" value="ESCI" onclick="esci()">
+            </div>
+        </div>
+    </body>
+    <script>
+        const player1ScoreElem = document.getElementById("puntiGiocatore1");
+        const cpuScoreElem = document.getElementById("puntiCpu");
+        const messageElem = document.getElementById("messaggio");
+
+
+        function gioca(elem) {
+            // absolute path?
+            console.log(elem);
+        }
+    </script>
+</html>

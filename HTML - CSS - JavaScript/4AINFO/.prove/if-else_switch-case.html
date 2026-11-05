@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Condizioni</title>
+        <style>
+            .quadrato {
+                border: 1px solid black;
+                width: 100px;
+                height: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box" class="quadrato"></div>
+        <input type="button" onclick="clicca()" value="NEXT">
+    </body>
+    <script>
+        const boxElem = document.getElementById("box");
+        let colorCount = 0;
+
+        function clicca() {
+            /*
+            if (colorCount === 0) {
+                boxElem.style.backgroundColor = "red";
+            } else if (colorCount === 1) {
+                boxElem.style.backgroundColor = "green";
+            } else if (colorCount === 2) {
+                boxElem.style.backgroundColor = "blue";
+            } else {
+                boxElem.style.backgroundColor = "white";
+                colorCount = 0;
+            }
+            colorCount ++;
+            */
+            switch (colorCount) {
+                case 0:
+                    console.log("R");
+                    boxElem.style.backgroundColor = "red";
+                    colorCount ++;
+                    break;
+
+                case 1:
+                    console.log("G");
+                    boxElem.style.backgroundColor = "green";
+                    colorCount ++;
+                    break;
+
+                case 2:
+                    console.log("B");
+                    boxElem.style.backgroundColor = "blue";
+                    colorCount ++;
+                    break
+
+                default:
+                    console.log("None");
+                    boxElem.style.backgroundColor = "white";
+                    colorCount = 0;
+                    break
+            }
+        }
+    </script>
+</html>

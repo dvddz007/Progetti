@@ -1,0 +1,90 @@
+:root {
+    --sub-btn-bg: hsl(120, 60%, 50%);
+    --sub-btn-bg-hover: hsl(120, 60%, 40%);
+    --res-btn-bg: hsl(14, 100%, 50%);
+    --res-btn-bg-hover: hsl(14, 90%, 40%);
+    --input-focus-border: hsl(210, 100%, 50%);
+}
+
+body {
+    background-color: #f1f5f8;
+}
+
+select {
+    padding: 15px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+#result {
+    font-size: 50px;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.operations {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+.operations > * {
+    margin: 0 10px;     /* up-down left-right */
+}
+
+#result {
+    text-align: center;
+}
+
+#submit-btn, #reset-btn {
+    font-size: 16px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#submit-btn {
+    background-color: var(--sub-btn-bg);
+}
+
+#submit-btn:hover {
+    background-color: var(--sub-btn-bg-hover);
+}
+
+#reset-btn {
+    background-color: var(--res-btn-bg);
+}
+
+#reset-btn:hover {
+    background-color: var(--res-btn-bg-hover);
+}
+
+input:focus, select:focus {
+    border: 2px solid var(--input-focus-border);    /* 2px è il default del focus */
+}
+
+input[type="text"] {
+    font-size: 20px;
+}
+
+select[name="operations"] {
+    font-size: 20px;
+    text-align: center;
+}

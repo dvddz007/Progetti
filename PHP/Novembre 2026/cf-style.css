@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f2f5;
+}
+
+#container {
+    width: 100%;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    padding: 20px;
+}
+
+#container > .sezione:last-child {
+    background-color: #168b35;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sezione {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    min-height: 45px;
+    padding: 12px 16px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow-wrap: anywhere;
+    gap: 10px;
+}
+
+.sezione:last-child {
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+
+.sezione > label:first-child {
+    flex: 0 0 140px;
+    text-align: right;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.nome input[type="text"],
+.cognome input[type="text"],
+.comune input[type="text"] {
+    flex: 1;
+    min-width: 0;
+    height: 34px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font: inherit;
+}
+
+.data input[type="date"] {
+    flex: 1;
+    min-width: 0;
+    height: 34px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font: inherit;
+}
+
+.sesso {
+    gap: 10px;
+}
+
+.sesso input[type="radio"] {
+    flex: 0 0 auto;
+    margin: 0;
+}
+
+.sesso label:not(:first-child) {
+    flex: 0 0 auto;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.invio {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+}
+
+.invio input[type="submit"] {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #168b35;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.invio input[type="submit"]:hover {
+    background-color: #106b29;
+}

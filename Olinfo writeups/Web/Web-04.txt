@@ -1,0 +1,20 @@
+Ripetere lo stesso procedimento di Web-3 ma usando oltre che all'header X-Password, l'header Accept con la rappresentazione application/xml.
+la flag si troverà dentro il tag users come primo user.
+
+Script:
+
+import requests
+
+url = "http://web-04.challs.olicyber.it/users"
+
+headers = {
+    "X-Password": "admin",
+    "Accept": "application/xml"
+}
+
+risposta = requests.get(url, headers=headers)
+
+print(risposta.text)
+
+
+Flag= flag{54m3_7hing_diff3r3n7_7hing} 

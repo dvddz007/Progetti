@@ -1,0 +1,1 @@
+Misc 05: collegamento al server tcp.challs.olicyber.it 12210 tramite il comando nc (netcat). Flag = flag{TcP_pR0t0c0L_3xP3r7}

@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, serif;
+}
+
+ul.menu li > a {
+    text-decoration: none;
+    color: initial;
+}
+
+ul.menu li:hover {
+    color: white;
+    background-color: blue;
+}
+
+ul.menu li:active {
+    color: grey;
+}
+
+ul.menu:nth-child(2) {
+    background-color: yellow;
+}
+
+ul.menu:first-child:first-letter {
+    font-weight: bold;
+}

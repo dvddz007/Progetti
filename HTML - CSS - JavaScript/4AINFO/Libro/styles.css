@@ -1,0 +1,45 @@
+#img
+   {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+   }
+
+h2
+   {
+    text-align: center;
+   }
+            
+a
+   {
+    text-decoration: none;
+    color: brown;
+   }
+
+h4
+   {
+    text-align: center;
+    text-decoration: underline;
+    color: red;
+   }
+
+p
+   {
+    font-size: 20px;
+   }
+            
+li
+   {
+    width: 20%;
+    float: left;
+    text-align: center; 
+   }
+
+div#bordi
+   {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1020px;
+    height: 150px;
+    border: 4px solid #06402B;
+   }   

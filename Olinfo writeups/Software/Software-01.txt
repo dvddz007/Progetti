@@ -1,0 +1,3 @@
+tramite wsl, usare il comando "readelf -h nomefile" per visualizzare l'header del file. nella sezione "Machine si trova l'architettura".
+
+Flag = flag{aarch64}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cascata</title>
+
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            h1 {
+                color: blue !important;
+            }
+
+            #titolo {
+                color: violet;
+            }
+
+            .titolo {
+                color: red;
+            }
+
+            span {
+                color: red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1 id="titolo" class="titolo">In CSS, l'ordine conta!</h1>
+        <p>
+            Priorità:
+            <br><br>
+            ID ---> CLASSE ---> ELEMENTO
+            <br><br>
+            (La clausola <strong><em>!important</em></strong> sovrascrive la priorità). <span><strong>NON USARLO!!!</strong></span>
+        </p>
+    </body>
+</html>

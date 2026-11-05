@@ -1,0 +1,3 @@
+scaricare Wireshark tramite apt (sudo apt install wireshark) e scaricare il file .pcap da OliCyber (https://training.olicyber.it/challenges#challenge-238). Analizzare la sesta rete e copiare la stringa in hex (666c61677b5930755f6b6e30775f576834745f615f506334705f31737d0a). Decodificando la stringa si riceverà la flag.
+
+Flag = flag{Y0u_kn0w_Wh4t_a_Pc4p_1s}

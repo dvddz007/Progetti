@@ -1,0 +1,3 @@
+filtrare per http e andare nel frame con l'header (PNG). nella sezione "MIME" aprire "Encapsulated multipart part" e copiare TUTTI i dati di "Portable Network Graphics" in base64. inserire la stringa su cyberchef con "Render Image" Raw.
+
+Flag = flag{3XtR4cT1n6_Fl4g5_L1k3_a_B0$$}

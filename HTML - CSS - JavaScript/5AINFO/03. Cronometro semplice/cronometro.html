@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--
+    Realizzare un pagina web contenente:
+    un <h1> inizialmente vuoto
+    un pulsante START
+    un pulsante STOP (all'inizio disabilitato)
+    Quando l'utente preme il pulsante START deve partire il cronometro, ovvero il tag <h1> deve mostrare il numero di secondi passato dalla pressione di start.
+    Quando l'utente preme il pulsante stop il cronometro si deve fermare e l'h1 deve mostrare i secondi contati.
+    Durante il cronometro disabilitare il pulsante START (settare il suo attributo disabled a true).
+    Quando il cronometro viene fermato riabilitare il pulsante start e disabilitare il pulsante stop.
+-->
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #container {
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .row {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .col {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #btnContainer {
+                margin-top: 30px;
+            }
+
+            #startBtn {
+                background-color: blue;
+                margin-right: 50px;
+            }
+
+            #stopBtn {
+                background-color: red;
+            }
+
+            input[type="button"] {
+                padding: 10px 20px;
+                color: white;
+                border: none;
+                border-radius: 10px;
+            }
+
+            input[type="button"]:hover {
+                transform: scale(1.1);
+                transition: transform 0.2s;
+            }
+
+            #startBtn:hover {
+                background-color: darkblue;
+            }
+
+            #stopBtn:hover {
+                background-color: darkred;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="row">
+                <h1 id="show">Inizia a contare</h1>
+            </div>
+            <div class="row" id="btnContainer">
+                <input type="button" value="START" id="startBtn" onclick="start();">
+                <input type="button" value="STOP" id="stopBtn" onclick="stop();">
+            </div>
+        </div>
+    </body>
+    <script>
+        const showElem = document.getElementById("show");
+        const stopBtn = document.getElementById("stopBtn");
+        const startBtn = document.getElementById("startBtn");
+        let intervalId;
+        stopBtn.disabled = true;
+
+
+        function start() {
+            console.log("start");
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+            let counterS = 0;
+            console.log(counterS);
+            intervalId = setInterval( () => {
+                counterS++;
+                showElem.innerHTML = counterS;
+                console.log(counterS);
+            }, 1000)
+            showElem.innerHTML = counterS;
+        }
+
+
+        function stop() {
+            console.log("stop");
+            clearInterval(intervalId);
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+        }
+    </script>
+</html>

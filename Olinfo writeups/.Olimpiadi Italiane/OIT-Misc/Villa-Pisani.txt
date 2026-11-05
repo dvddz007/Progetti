@@ -1,0 +1,85 @@
+su wsl, inviare il comando "dig -t txt -p10500 @pisani.challs.olicyber.it 00000000-0000-4000-0000-000000000000.maze.localhost" e nella sezione "answer section" si trovano le varie direzioni possibili del labirinto.
+se si incontra un vicolo cieco, si torna indietro e si prova con la altre direzioni. le flag da usare sono "txt" e "a".
+
+
+Script:
+import dns.resolver
+import socket
+from collections import deque
+import re
+
+# Funzione di controllo flag
+def check_for_flag(result):
+    """Check if the result contains a flag"""
+    if not result:
+        return None
+
+    if "flag" in result.lower() or "olicyber" in result.lower() or "{" in result:
+        flag_patterns = [
+            r'IN\s+TXT\s+"([^"]*flag[^"]*)"',
+            r'IN\s+TXT\s+"([^"]*olicyber{[^}]+}[^"]*)"',
+            r'IN\s+TXT\s+"([^"]*{[^}]+}[^"]*)"',
+        ]
+
+        for pattern in flag_patterns:
+            matches = re.findall(pattern, result, re.IGNORECASE)
+            for match in matches:
+                return match
+
+        # Fallback su tutte le stringhe TXT
+        txt_matches = re.findall(r'IN\s+TXT\s+"([^"]*)"', result)
+        for match in txt_matches:
+            if "flag" in match.lower() or "{" in match:
+                return match
+
+    return None
+
+
+# Setup DNS resolver
+res = dns.resolver.Resolver()
+res.timeout = 3
+res.lifetime = 5
+res.port = 10500
+res.nameservers = [socket.gethostbyname("pisani.challs.olicyber.it")]
+
+# Labirinto
+visited = set()
+queue = deque(["00000000-0000-4000-0000-000000000000.maze.localhost"])
+
+while queue:
+    node = queue.popleft()
+    if node in visited:
+        continue
+    visited.add(node)
+
+    print(f"🔍 Visitando: {node}")
+
+    # 1. Provo a prendere il TXT
+    try:
+        txt_resp = res.resolve(node, "TXT")
+        txt_raw = "\n".join(str(r) for r in txt_resp.response.answer)
+        flag = check_for_flag(txt_raw)
+        if flag:
+            print(f"🏁 FLAG TROVATA: {flag}")
+            break
+    except Exception:
+        pass
+
+    # 2. Se ho il TXT, provo a leggere i vicini
+    directions = ["up", "down", "left", "right"]
+    for direction in directions:
+        sub = f"{direction}.{node}"
+        try:
+            cname_resp = res.resolve(sub, "CNAME")
+            target = cname_resp[0].to_text().strip(".")
+            if target not in visited:
+                print(f"➡️  Trovato vicino: {target}")
+                queue.append(target)
+        except Exception:
+            continue
+
+print("✅ Fine, flag trovata o labirinto esaurito.")
+
+
+
+Flag = flag{l0st_1n_4_M4z3?!}

@@ -1,0 +1,12 @@
+py -m pip install mysql-connector-python Pillow
+
+import tkinter as tk
+from tkinter import ttk, messagebox
+import mysql.connector
+from PIL import Image, ImageTk, ImageDraw, ImageOps
+from io import BytesIO
+import hashlib
+import hmac
+import os
+import re
+from decimal import Decimal, InvalidOperation, ROUND_HALF_UP

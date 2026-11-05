@@ -1,0 +1,17 @@
+Stesso procedimento di Web-01 ma aggiungendo il parametro id.
+
+
+Script:
+
+import requests
+
+url = "http://web-02.challs.olicyber.it/server-records"
+
+parametri = {"id": "flag"}
+
+risposta = requests.get(url, params=parametri)
+
+print(risposta.text)
+
+
+Flag = flag{wh47_i5_y0ur_qu3ry}

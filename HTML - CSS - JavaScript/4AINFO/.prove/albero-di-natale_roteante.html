@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+    <meta charset="UTF-8">
+    <title>Albero di natale</title>
+    <style>
+        body {
+            background-color: lightgreen;
+        }
+
+        .stella {
+            width: 50px;
+            height: 50px;
+            border: 1px solid orange;
+            border-radius: 10px;
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            border: 1px solid green;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        #container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* con #albero dava probelmi di specificitá
+           andando poi a modificare le classi */
+        .albero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 300px;
+        }
+
+        .riga {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .yellowBg {
+            background-color: yellow;
+        }
+
+        .brownBg {
+            background-color: brown;
+        }
+
+        .pulsanti {
+            margin-top: 100px;
+        }
+
+        #ruotaBtn {
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: darkgreen;
+            color: white;
+        }
+
+        #ruotaBtn:hover {
+            transition: 0.1s;
+            transform: scale(1.05);
+            background-color: darkred;
+        }
+
+        .row {
+            flex-direction: row;
+        }
+        
+        .column {
+            flex-direction: column;
+        }
+
+        .row-reverse {
+            flex-direction: row-reverse;
+        }
+
+        .column-reverse {
+            flex-direction: column-reverse;
+        }
+    </style>
+    </head>
+    <body onkeydown="ruota(event)">
+        <div id="container">
+            <div class="albero">
+                <div class="riga">
+                    <div class="stella yellowBg"></div>
+                </div>
+                <div class="riga">
+                    <div class="box" onclick="accendiRiga(this)"></div>
+                    <div class="box" onclick="accendiRiga(this)"></div>
+                </div>
+                <div class="riga">
+                    <div class="box" onclick="accendiRiga(this)"></div>
+                    <div class="box" onclick="accendiRiga(this)"></div>
+                    <div class="box" onclick="accendiRiga(this)"></div>
+                </div>
+                <div class="riga">
+                    <div class="box" onclick="accendiRiga(this)"></div>
+                    <div class="box" onclick="accendiRiga(this)"></div>
+                    <div class="box" onclick="accendiRiga(this)"></div>
+                    <div class="box" onclick="accendiRiga(this)"></div>
+                </div>
+                <div class="riga">
+                    <div class="box brownBg"></div>
+                </div>
+            </div>
+            <div class="pulsanti">
+                <input id="ruotaBtn" type="button" value="RUOTA" onclick="ruota(event)">
+            </div>
+        </div>
+    </body>
+    <script>
+        const alberoElem = document.querySelector(".albero");
+        const righeElems = document.querySelectorAll(".riga");
+        let i = 0; // indice giri albero
+
+        function accendi(elemento) {
+            elemento.classList.toggle("yellowBg");
+        }
+
+        function accendiRiga(elemento) {
+            // prendo la riga del quadrato cliccato
+            const riga = elemento.parentElement;
+
+            // prendo tutti i quadrati della riga
+            const quadrati = riga.children;
+
+            // accendo tutti i quadrati
+            for (let j = 0; j < quadrati.length; j++) {
+                quadrati[j].classList.toggle("yellowBg");
+            }
+        }
+
+        function ruota(e) {
+            alberoElem.classList.remove("row", "row-reverse", "column", "column-reverse");
+
+            for (let j = 0; j < righeElems.length; j++) {
+                righeElems[j].classList.remove("row", "row-reverse", "column", "column-reverse");
+            }
+
+            if (e.key === 'ArrowRight' || e.key === 'd' || e.key === '2') {
+                i = 0;
+            } else if (e.key === 'ArrowDown' || e.key === 's' || e.key === '3') {
+                i = 1;
+            } else if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === '4') {
+                i = 2;
+            } else if (e.key === 'ArrowUp' || e.key === 'w' || e.key === '1' || e.key === 'Enter' || e.key === 'Escape') {
+                i = 3;
+            }
+
+            if (i === 0) {
+                alberoElem.classList.add("row-reverse");
+                for (let j = 0; j < righeElems.length; j++) {
+                    righeElems[j].classList.add("column");
+                }
+            } else if (i === 1) {
+                alberoElem.classList.add("column-reverse");
+                for (let j = 0; j < righeElems.length; j++) {
+                    righeElems[j].classList.add("row");
+                }
+            } else if (i === 2) {
+                alberoElem.classList.add("row");
+                for (let j = 0; j < righeElems.length; j++) {
+                    righeElems[j].classList.add("column");
+                }
+            } else if (i === 3) {
+                alberoElem.classList.add("column");
+                for (let j = 0; j < righeElems.length; j++) {
+                    righeElems[j].classList.add("row");
+                }
+            }
+
+            i++;
+            if (i > 3) {
+                i = 0;
+            }
+        }
+    </script>
+</html>

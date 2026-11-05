@@ -1,0 +1,364 @@
+:root {
+    --dark-blue: #0b1e3d;
+    --title_bg: #254b85;
+    --stone: #4A4A4A;
+    --stone_rgb: 74, 74, 74;
+    --choice-buttons: 75, 0, 130;
+    --choice-buttons-hover: 138, 43, 226;
+    --bg-scelta: 230, 230, 230;
+    --game-over: 200, 0, 0, 1;
+    --bg-ending: #0b1e3d;
+    --restart-btn: 80, 130, 180;
+    --restart-btn-hover: 107, 156, 207;
+    --sx1-btn: #3d642d;
+    --sx2-btn: #bca215;
+    --sx3-btn: #61997b;
+    --sx4-btn: #c64b1d;
+    --dx1-btn: #C4A484;
+    --dx2-btn: #a6a6a6;
+    --dx3-btn: #005051;
+    --dx4-btn: #7E8C54;
+}
+
+body {
+    height: 100%;
+    background-size: cover;
+}
+
+.scelta-stanza {
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    background-color: rgba(var(--stone_rgb), 0.7);  /* rgb alpha (opacità) */
+    padding: 10px;
+    border-radius: 5px;
+    width: 25%;
+    margin: 35px auto;
+}
+
+.scelta_sx, .scelta_dx {
+    text-align: center;
+    width: 40%;
+    margin: 30px 20px;
+    display: inline-block;
+    padding: 20px;
+    background-color: rgba(var(--bg-scelta), 0.7);
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.scelta_sx {
+    float: left;
+}
+
+.scelta_dx {
+    float: right;
+}
+
+.sx-btn, .dx-btn {
+    display: block;
+    width: 200px;
+    padding: 10px 20px;    /* top-bottom e right-left */
+    margin: 20px auto;      /* auto ti mette al centro della width/height */
+    background-color: rgba(var(--choice-buttons), 1);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.sx-btn {
+    position: absolute;     /* prende la posizione dal genitore (in questo caso il main) */
+    top: 750px;
+    left: 15%;
+}
+
+.dx-btn {
+    position: absolute;
+    left: 1400px;
+    top: 750px;
+}
+
+.sx-btn:hover, .dx-btn:hover {
+    background-color: rgba(var(--choice-buttons-hover), 0.7);
+    transition: 0.5s;
+    transform: scale(1.1);
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+#index {
+    background-image: url("../img/index.png");
+}
+
+#title {
+    font-family: 'Cinzel', serif;
+    font-size: 50px;
+    background-color: var(--title_bg);
+    border-radius: 10px;
+    text-align: center;
+    margin: 50px 750px 0 750px;
+}
+
+.index-button {
+    font-family: 'Georgia', serif;
+    font-size: 20px;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    padding: 50px 125px;
+    background: linear-gradient(180deg, #060f1f, #3b82f6);
+    border: 1px solid black;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+#start, #leave {
+    transform: translateX(-50%) scale(1.0);
+}
+
+#leave {
+    padding: 25px 65px;
+    position: absolute;
+    top: 90%;
+}
+
+#start:hover, #leave:hover {
+    transition: 0.4s;
+    transform: translateX(-50%) scale(1.1);
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+#story {
+    background-image: url("../img/bg-storia.png");
+    font-family: 'Cinzel', serif;
+    text-align: center;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+.typewriter {
+    animation-name: typing;
+    animation-duration: 1s;
+    animation-timing-function: steps(30);   /* movimento dell'animazione */
+    animation-iteration-count: 1;
+
+    text-align: center;
+    display: inline-block;
+    color: white;
+    font-size: 30px;
+    border: 2px solid var(--stone);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: rgba(240, 240, 240, 0.5);
+}
+
+#to-room {
+    display: inline-block;
+    margin: 20px 0 0 0;
+    background-color: var(--stone);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+#to-room:hover {
+    transition: 0.4s;
+    transform: scale(1.1);
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+#scelta {
+    background-image: url("../img/scelta.png");
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+#funghi {
+    background-image: url("../img/sx/stanza-funghi.png");
+}
+
+#funghi > main > section a {
+    background-color: var(--sx1-btn);
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+#scelta_sx > p > span, #scelta_dx > p > span {
+    font-weight: bold;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+#parcheggio {
+    background-image: url("../img/dx/stanza-macchine.png");
+}
+
+#parcheggio > main > section a {
+    background-color: var(--dx1-btn);
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+#specchi {
+    background-image: url("../img/sx/stanza-specchi.png");
+}
+
+#specchi > main > section a {
+    background-color: var(--sx2-btn);
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+.scelta-stanza.foo-op {
+    background-color: rgba(var(--stone_rgb), 0.9);
+}
+
+.scelta_sx.foo-op, .scelta_dx.foo-op {
+    background-color: rgba(var(--bg-scelta), 0.9);
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+#scalinata {
+    background-image: url("../img/dx/stanza-scalinata.png");
+}
+
+#scalinata > main > section a {
+    background-color: var(--dx2-btn);
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+#ombre {
+    background-image: url("../img/sx/stanza-ombre.png");
+}
+
+#ombre > main > section a {
+    background-color: var(--sx3-btn);
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+#luce {
+    background-image: url("../img/dx/stanza-luce.png");
+}
+
+#luce > main > section a {
+    background-color: var(--dx3-btn);
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+#santuario {
+    background-image: url("../img/sx/stanza-santuario.png");
+}
+
+#santuario > main > section a {
+    background-color: var(--sx4-btn);
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+#tempio {
+    background-image: url("../img/dx/stanza-tempio.png");
+}
+
+#tempio > main > section a {
+    background-color: var(--dx4-btn);
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+.gameover {
+    background-color: black;
+    text-align: center;
+    color: white;
+}
+
+.gameover > main > h1 {
+    font-size: 60px;
+    margin: 20px 50px 50px;
+    color: rgba(var(--game-over));
+}
+
+.gameover > main > p {
+    font-size: 20px;
+    margin: 25px;
+}
+
+#retry-btn {
+    background-color: rgba(var(--choice-buttons), 1);
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    display: inline-block;
+    margin: 25px;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+#retry-btn:hover {
+    background-color: rgba(var(--choice-buttons-hover));
+}
+
+.ending {
+    background-color: var(--bg-ending);
+
+    /* gradiente che si espande verso l'esterno
+    (circolare, bianco, trasparenza 5%, secondo colore (area trasparente per dare spazio ai puntini), distanza di transizione. */
+    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    /* spazio (x, y) tra ciascun pattern di puntini */
+    background-size: 50px 50px;
+
+    text-align: center;
+    color: var(--stone);
+    font-family: 'Cinzel', serif;
+    padding: 40px;
+}
+
+.ending > main > h1 {
+    font-size: 60px;
+    margin: 30px 50px 20px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.ending > main > p {
+    font-size: 20px;
+    margin: 25px;
+    background-color: rgba(255,255,255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    line-height: 1.8;
+}
+
+#bad-ending > main > p > span, #good-ending > main > p > span {
+    font-style: italic;
+    color: yellow;
+}
+
+.restart-btn {
+    background-color: rgba(var(--restart-btn), 1);
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    display: inline-block;
+    margin: 25px;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+.restart-btn:hover {
+    background-color: rgba(var(--restart-btn-hover), 0.7);
+    transition: 0.4s;
+    transform: scale(1.1);
+}

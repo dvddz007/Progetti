@@ -1,0 +1,27 @@
+convertire la stringa in bytes, scriviamo un ciclo for che provi ad usare lo XOR su tra ciascun byte e ciascuna combinazione possibile di caratteri in esadecimale. con un altro ciclo for controlliamo se il carattere restituito è stampabile in codice ASCII, poi stampa tutte le chiavi leggibili.
+
+Script:
+
+m = bytes.fromhex("104e137f425954137f74107f525511457f5468134d7f146c4c")
+
+for key in range(256):
+    plaintext = []
+
+    for byte in m:
+        decrypted_byte = byte ^ key
+        plaintext.append(decrypted_byte)
+
+    plaintext_bytes = bytes(plaintext)
+
+    is_readable = True
+    for c in plaintext_bytes:
+        if c < 32 or c > 126:
+            is_readable = False
+            break
+
+    if is_readable:
+        print(f"Chiave: {key: 02x} -> {plaintext_bytes.decode()}")
+
+
+
+Flag = flag{0n3_byt3_T0_ru1e_tH3m_4Ll}

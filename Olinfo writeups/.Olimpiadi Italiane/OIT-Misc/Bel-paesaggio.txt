@@ -1,0 +1,7 @@
+scaricare la GIF e importarla su un sito che la divida in frame. il frame 4 conterrà la flag in alto a sinistra.
+
+
+Sito: https://ezgif.com/split
+
+
+Flag = flag{la_pazienza_ha_un_limite}

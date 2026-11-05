@@ -1,0 +1,1 @@
+Misc 06: abbiamo trovato la stringa equivalente al regex ^flag\{[\D]{2}[0][a-z][^0-9][L][\w]{4}[^a-pr-z]{3}[^\d]{2}[\d][b]\}$ tramite il sito " https://regex101.com/ " seguendo la spiegazione riportata su di esso. Flag = flag{DD0bhLqqqqqqqbs7b}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quiz lavoratori</title>
+
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #container {
+                height: 100vh;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .domanda {
+                width: 75vh;
+            }
+
+            .risposte {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .opzione {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            #titolo {
+                color: red;
+                font-size: 25px;
+            }
+
+            #verifica {
+                margin-top: 20px;
+            }
+
+            #verificaBtn {
+                padding: 10px;
+                border: none;
+                border-radius: 4px;
+                background-color: green;
+                color: white;
+            }
+
+            #verificaBtn:hover {
+                background-color: darkgreen;
+                transform: scale(1.05);
+            }
+
+            #punteggioContainer {
+                font-weight: bold;
+                margin-top: 20px;
+            }
+
+            .corretto {
+                background-color: #4caf50;
+                color: white;
+            }
+
+            .errato {
+                background-color: #f44336;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="container">
+            <div id="titolo">Quiz diritti del lavoratore</div>
+            <div id="punteggioContainer">
+                Punteggio: <span id="punteggio">0</span>
+            </div>
+            <div class="domanda">
+                <p>1. Cosa deve sempre contenere un contratto di lavoro?</p>
+
+                <div class="risposte">
+                    <div class="opzione false">A) Solo accordo verbale tra le parti <input type="checkbox" onclick="check(this)"></div>
+                    <div class="opzione true">B) Mansioni, retribuzione e orario di lavoro <input type="checkbox" onclick="check(this)"></div>
+                    <div class="opzione false">C) Solo il nome del lavoratore <input type="checkbox" onclick="check(this)"></div>
+                    <div class="opzione false">D) Nessuna informazione obbligatoria <input type="checkbox" onclick="check(this)"></div>
+                </div>
+            </div>
+            <div class="domanda">
+                <p>2. In generale, quante ore settimanali prevede un contratto full-time in Italia?</p>
+
+                <div class="risposte">
+                    <div class="opzione false">A) 20 ore <input type="checkbox" onclick="check(this)"></div>
+                    <div class="opzione true">B) 40 ore circa <input type="checkbox" onclick="check(this)"></div>
+                    <div class="opzione false">C) 60 ore obbligatorie <input type="checkbox" onclick="check(this)"></div>
+                    <div class="opzione false">D) Non esiste un limite <input type="checkbox" onclick="check(this)"></div>
+                </div>
+            </div>
+            <div class="domanda">
+                <p>3. Le ferie annuali retribuite servono principalmente a:</p>
+
+                <div class="risposte">
+                    <div class="opzione false">A) Lavorare da casa senza pausa <input type="checkbox" onclick="check(this)"></div>
+                    <div class="opzione true">B) Garantire il recupero psico-fisico del lavoratore <input type="checkbox" onclick="check(this)"></div>
+                    <div class="opzione false">C) Perdere giorni di stipendio <input type="checkbox" onclick="check(this)"></div>
+                    <div class="opzione false">D) Essere sostituibili senza regole <input type="checkbox" onclick="check(this)"></div>
+                </div>
+            </div>
+            <div class="domanda">
+                <p>4. Qual è un obbligo del datore di lavoro in materia di sicurezza?</p>
+
+                <div class="risposte">
+                    <div class="opzione false">A) Far lavorare senza protezioni <input type="checkbox" onclick="check(this)"></div>
+                    <div class="opzione true">B) Fornire dispositivi di protezione individuale (DPI) <input type="checkbox" onclick="check(this)"></div>
+                    <div class="opzione false">C) Evitare qualsiasi formazione <input type="checkbox" onclick="check(this)"></div>
+                    <div class="opzione false">D) Delegare tutto al lavoratore <input type="checkbox" onclick="check(this)"></div>
+                </div>
+            </div>
+            <div class="domanda">
+                <p>5. Il congedo di maternità/paternità serve a:</p>
+
+                <div class="risposte">
+                    <div class="opzione false">A) Perdere il posto di lavoro <input type="checkbox" onclick="check(this)"></div>
+                    <div class="opzione true">B) Proteggere il lavoratore durante la nascita di un figlio <input type="checkbox" onclick="check(this)"></div>
+                    <div class="opzione false">C) Lavorare più ore gratuitamente <input type="checkbox" onclick="check(this)"></div>
+                    <div class="opzione false">D) Evitare qualsiasi diritto lavorativo <input type="checkbox" onclick="check(this)"></div>
+                </div>
+            </div>
+            <div id="verifica">
+                <input type="button" value="VERIFICA" id="verificaBtn" onclick="verifica()">
+            </div>
+        </div>
+    </body>
+    <script>
+        const punteggioElem = document.getElementById("punteggio");
+        const risposteArr = [];
+
+        
+        function check(exception) {
+            // closest risale il ramo HTMl e cerca un elemento con l'attributo indicato (id, classe, tag)
+            // risale e cerca il contenitore delle risposte. restituisce un elemento html
+            const opzioniElem = exception.closest(".risposte");
+            // creo un array di tutti i checkbox di quella domanda
+            const risposteCheckboxes = opzioniElem.querySelectorAll('input[type="checkbox"]');
+
+            // deseleziona tutte le checkbox TRANNE quella cliccata
+            risposteCheckboxes.forEach(checkbox => {
+                if (checkbox !== exception) {
+                    checkbox.checked = false;
+                }
+            });
+        }
+
+
+        function verifica() {
+            let punteggio = 0;
+            const domande = document.querySelectorAll(".domanda");
+
+            // su ogni domanda
+            domande.forEach(domanda => {
+                const opzioni = domanda.querySelectorAll(".opzione");
+
+                opzioni.forEach(opzione => {
+                    opzione.classList.remove("corretto", "errato");
+                });
+
+                // salva il checkbox selezionato della domanda
+                const checkbox = domanda.querySelector("input:checked");
+
+                // non ci sono checkbox selezionati
+                if (!checkbox) {
+                    return;
+                }
+
+                // risale al div opzione della domanda
+                const opzione = checkbox.closest(".opzione");
+
+                if (opzione.classList.contains("true")) {
+                    opzione.classList.add("corretto");
+                    punteggio += 1;
+                } else {
+                    opzione.classList.add("errato");
+                    punteggio -= 1;
+                }
+            });
+            punteggioElem.innerHTML = punteggio;
+        }
+    </script>
+</html>

@@ -1,0 +1,21 @@
+Importare le librerie requests, beautifulsoup e Comment (stringa speciale). Inviare una richiesta get che restituirà la pagina HTML che con un ciclo for estrarrà tutte le stringe lambda, commenti in html. Concatenare tutti i commenti e stampare la flag.
+
+
+Script:
+
+import requests
+from bs4 import BeautifulSoup, Comment
+
+flag = ""
+
+risposta = requests.get("http://web-14.challs.olicyber.it/")
+
+tag = BeautifulSoup(risposta.text, 'html.parser')
+
+for comment in tag.find_all(string=lambda text: isinstance(text, Comment)):
+    flag = flag + comment.strip()
+
+print(flag)
+
+
+Flag = flag{50m3b0dy_f0rg07_70_d31373_7hi5}

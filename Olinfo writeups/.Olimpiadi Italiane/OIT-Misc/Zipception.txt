@@ -1,0 +1,14 @@
+usando il comando unzip (che va installato) di bash, ho creato uno script e ho trovato la flag in un file txt.
+
+
+Script:
+
+num=3000
+
+for ((i=num; i>0; i--))
+do
+  unzip -o "flag${i}.zip" -d "$(dirname "flag${i}.zip")"
+done
+
+
+Flag = flag{Un0_z1p_d3n7r0_un0_z1p_1mp0551b1l3!}

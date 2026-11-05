@@ -1,0 +1,27 @@
+installare un hex editor (es. HxD) e modificare l'header del file in uno valido. le gif hanno un come header "GIF87a" oppure, "GIF89a", come in questo caso. convertire il file in una gif ed estrarre i frame online o con uno script python. la flag è contenuta nel frame 11.
+
+Script:
+
+from PIL import Image, ImageSequence, ImageFile
+from fpdf import FPDF
+import os
+
+ImageFile.LOAD_TRUNCATED_IMAGES = True
+
+gif_path = "percorso/file.gif"
+output_dir = "estratti_frames"
+output_pdf = "estratti_olicyber_frames.pdf"
+
+os.makedirs(output_dir, exist_ok=True)
+
+with Image.open(gif_path) as im:
+    frame_paths = []
+    for i, frame in enumerate(ImageSequence.Iterator(im)):
+        frame_path = os.path.join(output_dir, f"frame_{i:03d}.png")
+        frame.convert("RGB").save(frame_path)
+        frame_paths.append(frame_path)
+
+print(f"Frame salvati in: {output_dir}")
+
+
+Flag = flag{Wh4t_th3_fl4g}

@@ -1,0 +1,68 @@
+:root {
+    --button-bg: #fc0;
+    --button-shadow: #b38f00;
+    --button-text: #333;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lampadine, .pulsanti {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.pulsanti {
+    margin-top: 100px;
+}
+
+.pulsanti input[type="button"] {
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 5px #b38f00;  /* spostamento asse x, spostamento asse y, colore */
+    transition: all 0.2s ease;   /* proprietá a cui applicazre l'animazione, durata animazione, tipo animazione */
+    margin: 0 10px;
+}
+
+.pulsanti input[type="button"]:hover {
+    transform: translateY(-2px);   /* asse Y invertita. */
+    box-shadow: 0 7px #b38f00;
+}
+
+.pulsanti input[type="button"]:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px #b38f00;
+}
+
+/* query per telefono */
+@media (max-width: 480px) {
+    .container {
+        height: auto;
+    }
+
+    .lampadine, .pulsanti {
+        flex-direction: column;
+    }
+
+    .pulsanti {
+        gap: 15px;   /* spazio tra gli elementi */
+    }
+
+    .pulsanti input[type="button"] {
+        width: 100%;  /* ogni pulsante riempie il suo contenitore */
+    }
+}

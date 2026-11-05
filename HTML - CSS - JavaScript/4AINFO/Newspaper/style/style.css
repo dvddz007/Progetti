@@ -1,0 +1,290 @@
+:root {
+    --bg: #eeeedd;
+    --blue: #003c7f;
+}
+
+body {
+    background-color: var(--bg);
+    margin: 20px 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+#barcode {
+    width: 250px;
+    height: 100px;
+}
+
+.float-left {
+    float: left;
+}
+
+.small-grey {
+    font-size: 12px;
+    color: grey;
+}
+
+.txt-align-center {
+    text-align: center;
+}
+
+.txt-align-right {
+    text-align: right;
+}
+
+.jc-flex-end {
+    justify-content: flex-end;
+}
+
+.jc-flex-start {
+    justify-content: flex-start;
+}
+
+.jc-space-between {
+    justify-content: space-between;
+}
+
+.gap {
+    gap: 26px;
+}
+
+.flex-grow-2:not(.vl) {
+    flex-grow: 2;
+}
+
+.flex-grow-1:not(.vl) {
+    flex-grow: 1;
+}
+
+.margin-20 {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+hr {
+    border: none;
+    background-color: black;
+    padding: 1px;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+#title {
+    font-family: 'Libre Bodoni', serif;
+    color: white;
+    font-size: 160px;
+    text-shadow: 3px 3px black;
+}
+
+.circle-pr {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    left: 30px;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+#square {
+    height: 100px;
+    width: 100px;
+}
+
+.rectangle {
+    width: 300px;
+    height: 100px;
+}
+
+.big-rectangle {
+    width: 500px;
+    height: 250px;
+}
+
+.blue:not(.normal-size) {
+    color: var(--blue);
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.blue.normal-size {
+    color: var(--blue);
+    font-weight: bolder;
+}
+
+.vl {
+    width: 1px;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+hr.short {
+    margin: 10px 0 10px;
+    width: 600px;
+}
+
+.red {
+    color: red;
+}
+
+#market .row > div:not(.vl) {
+    flex-grow: 1;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.margin-top {
+    margin-top: 10px;
+}
+
+.bigger-text {
+    font-size: 30px;
+}
+
+.hr {
+    padding: 1px;
+    background-color: black;
+}
+
+.hr-bold {
+    background-color: black;
+    padding: 2px;
+}
+
+#content {
+    margin-top: 30px;
+}
+
+.blu {
+    color: var(--blue);
+}
+
+.content-vl {
+    height: 350px;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.biggest-text {
+    font-size: 50px;
+}
+
+#rally {
+    width: 600px;
+    height: 800px;
+}
+
+.bit-right {
+    position: relative;
+    left: 100px;
+}
+
+.margin-left-right {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.small {
+    font-size: 12px;
+}
+
+.rally-height {
+    height: 1000px;
+}
+
+.lai-height {
+    height: 380px;
+}
+
+#figure {
+    width: 800px;
+    height: 400px;
+}
+
+.figure {
+    border: 1px solid;
+}
+
+.bg-red {
+    position: relative;
+    top: 50px;
+    background-color: red;
+    width: 3px;
+    height: 60px;
+
+}
+
+#mecalux {
+    font-family: 'Work Sans', sans-serif;
+}
+
+.ai-center {
+    align-items: center;
+}
+
+.mecalux-pos {
+    position: relative;
+    left: 100px;
+}
+
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
+.jc-center {
+    justify-content: center;
+}
+
+.more-margin-top {
+    margin-top: 70px;
+}
+
+.rectangle-ads {
+    width: 400px;
+    height: 200px;
+}
+
+.more-right {
+    position: relative;
+    left: 170px;
+}
+
+.pos {
+    position: relative;
+    left: 75px;
+}
+
+.bit-less {
+    width: 95%;
+}

@@ -1,0 +1,19 @@
+Inviare una richiesta con il verbo patch o put e stamparne l'header.
+
+
+Script:
+
+import requests
+
+# URL della risorsa
+url = "http://web-10.challs.olicyber.it/"
+
+# Invia una richiesta PUT
+risposta_put = requests.put(url)
+print (risposta_put.headers)
+
+risposta_patch = requests.patch(url)
+print(risposta_patch.headers)
+
+
+Flag = flag{br34king_7h3_ru135}

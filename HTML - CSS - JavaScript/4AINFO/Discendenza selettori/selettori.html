@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+    <html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Discendenza dei selettori</title>
+    </head>
+
+    <body>
+        <h1>Combinatore discendente</h1>
+        <p class="es">
+            SelettorePadre SelettoreFiglio <br> {
+            /* regole CSS */
+            }
+        </p>
+        <p>
+            Si usa per selezionare i <em><strong>discendenti</strong> di uno specifico selettore</em>.
+            <br><br>
+            - Sono compresi anche gli elementi nested (es: div dentro div)
+        </p>
+        <div id="discendente">
+            <p>PRIMO elemento <strong>(index 1)</strong></p>
+            <p>SECONDO elemento <strong>(index 2)</strong></p>
+            <p>TERZO elemento <strong>(index 3)</strong></p>
+            <p>QUARTO elemento <strong>(index 4)</strong></p>
+        </div>
+
+        <br>
+        <hr>
+        <br>
+
+        <h1>Combinatore per figlio</h1>
+        <p class="es">
+            SelettorePadre > SelettoreFiglio <br> {
+            /* regole CSS */
+            }
+        </p>
+        <p>
+            Si usa per selezionare i <em><strong>figli diretti</strong> di uno specifico selettore</em>.
+        </p>
+        <div id="diretto">
+            <p>PRIMO figlio diretto</p>
+            <p>ENNESIMO figlio diretto</p>
+            <p>ULTIMO figlio diretto</p>
+            <div>
+                <p>PRIMO discendente</p>
+                <p>ENNESIMO discendente</p>
+                <p>SECONDO discendente</p>
+            </div>
+        </div>
+    </body>
+</html>

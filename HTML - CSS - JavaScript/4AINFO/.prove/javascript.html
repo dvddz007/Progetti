@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Javascript</title>
+    </head>
+    <body>
+        
+    </body>
+    <!-- Il tag <script> tipicamente va creato sotto il <body> per permettere il caricamente della pagina. -->
+    <script>
+        window.alert("Alert");     // NON restituisce nulla
+        window.confirm("Confirm Box");      // restituisce un booleano true o false (senza maiuscole)
+        console.log("Log");     // l'equivalente del print() di python
+
+        {
+            // Istruzioni in un blocco
+            let variabile = 0;      // variabile modificabile
+            const PI = 3.14;        // variabile costante, scritta in maiuscolo
+            var v = 0;      // deprecato
+
+            variabile += ((10 + PI) * 2) / 2;        // la parte dopo l'uguale si chiama "espressione"
+            variabile++; //     equivalente di += 1
+
+            console.log(variabile);
+
+            let hello = "Hello";
+            let world = "World";
+            const exclamation_point = "!";
+            console.log(hello + " " + world + exclamation_point);       // funziona anche la concatenazione
+        }
+    </script>
+</html>

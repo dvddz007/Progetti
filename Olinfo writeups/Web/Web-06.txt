@@ -1,0 +1,21 @@
+Creiamo una sessione, richiediamo i cookie della pagina del token con una get e sfruttando la sessione precedente facciamo un'altra richiesta get per accedere alla pagina e ricevere la flag.
+
+
+Script:
+
+import requests
+
+session = requests.Session()
+
+token = "http://web-06.challs.olicyber.it/token"
+flag = "http://web-06.challs.olicyber.it/flag"
+
+session.get(token)
+
+risposta = session.get(flag)
+
+print(risposta.text)
+
+
+
+Flag= flag{7w0_574g3_4cc3s5}

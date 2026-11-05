@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    margin: 30px;
+    height: 15vh;
+}
+
+#p1Points, #p2Points {
+    display: block;
+    font-weight: lighter;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.matrice {
+    display: flex;
+    flex-direction: row;
+}
+
+.box > * {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 15vh;
+}

@@ -1,0 +1,3 @@
+accedendo nella sezione rete, come header di risposta si riceve la flag
+
+Flag = flag{s0no_1nc4strato_nell_h3ader}

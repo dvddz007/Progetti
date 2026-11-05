@@ -1,0 +1,3 @@
+usare il comando strings con la flag -a per ricevere tutte le stringhe del file e con grep estrarre il formato specifico della flag. strings -a sw-04 | grep "flag{".
+
+Flag = flag{0cca06f6}

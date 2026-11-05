@@ -1,0 +1,100 @@
+body {
+    background-image: url("img/bg/background.png");
+    background-size: cover;
+}
+
+h1 {
+    color: green;
+    text-align: center;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+table {
+    width: 70%;
+    margin: auto;
+    border-collapse: collapse;
+    /* border-spacing: 5px; */
+}
+
+table, th, td {
+    border: 5px solid grey;
+}
+
+div {
+    text-align: center;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.img-index {
+    width: 60px;
+    height: 60px;
+    display: block; /* il block non va a capo a differenza dell'inline */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img-artist {
+    border: 1px solid grey;
+    width: 200px;
+    height: auto; /* serve per non allungare l'immagine. la adatta in base alla width */
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.testo {
+    background-color: lightgray;
+    border: 3px solid black;
+    margin: 0 0 15px 0;
+    padding: 7px;
+}
+
+.back {
+    background-color: #28A745;
+    padding: 5px 5px 5px 5px;
+    border-radius: 6px;
+}
+
+.bio {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+.index {
+    font-weight: bold;
+}
+
+.txt_green {
+    color: green;
+}
+
+.bg_yellow {
+    background-color: yellow;
+
+}
+
+.bg_grey {
+    background-color: grey;
+}
+
+.bg_l-blue {
+    background-color: lightblue;
+}
+
+.white_box {
+    border: 1px solid white;
+}
+
+.brani{
+    color: red;
+    font-style: italic;
+}
+
+.padding {
+    padding: 2px 2px 2px 2px;
+}

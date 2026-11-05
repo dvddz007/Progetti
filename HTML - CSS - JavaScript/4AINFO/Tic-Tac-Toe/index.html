@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Tic-Tac-Toe</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="header">
+            <div class="p1_header">
+                <h3>PUNTEGGIO P1:</h3><h1 id="p1Points">0</h1>
+            </div>
+            <div class="turn_header">
+                <h1>É il turno di: <span id="turn">X</span></h1>
+            </div>
+            <div class="p2_header">
+                <h3>PUNTEGGIO P2:</h3><h1 id="p2Points">0</h1>
+            </div>
+        </div>
+        <div class="matrix">
+            <div class="boxes">
+                <div id="box1" onclick="handleMove(this)"></div>
+                <div id="box2" onclick="handleMove(this)"></div>
+                <div id="box3" onclick="handleMove(this)"></div>
+            </div>
+            <div class="boxes">
+                <div id="box4" onclick="handleMove(this)"></div>
+                <div id="box5" onclick="handleMove(this)"></div>
+                <div id="box6" onclick="handleMove(this)"></div>
+            </div>
+            <div class="boxes">
+                <div id="box7" onclick="handleMove(this)"></div>
+                <div id="box8" onclick="handleMove(this)"></div>
+                <div id="box9" onclick="handleMove(this)"></div>
+            </div>
+        </div>
+        <div class="footer">
+            <input type="button" value="RESET" onclick="reset(true)">
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>

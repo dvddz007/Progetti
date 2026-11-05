@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lancia Dadi</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+    <div id="container">
+        <div id="rounds" class="column">
+            <span>INSERIRE IL NUMERO DI ROUND DA GIOCARE</span>
+            <div class="row">
+                <input type="text" id="roundCounter">
+                <input type="button" value="INIZIA" onclick="startGame()">
+            </div>
+        </div>
+        
+        <div id="game" class="row hidden">
+            <div id="giocatore1" class="column">
+                <h1>PUNTI P1:</h1>
+                <span id="giocatore1Points">0</span>
+                <img src="img/blank.png" id="imgP1">
+            </div>
+
+            <div id="giocatore2" class="column">
+                <h1>PUNTI P2:</h1>
+                <span id="giocatore2Points">0</span>
+                <img src="img/blank.png" id="imgP2">
+            </div>
+        </div>
+
+        <div id="text" class="row hidden">
+            IL VINCITORE VERRÁ VISUALIZZATO QUI
+        </div>
+
+        <div id="buttons" class="row hidden">
+            <input type="button" value="GIOCA" onclick="start()">
+        </div>
+    </div>
+    <script src="script.js"></script>
+    </body>
+</html>

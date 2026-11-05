@@ -1,0 +1,81 @@
+body {
+    text-align: center;
+    background: linear-gradient(230deg, #eb92be, #ffef78, #63c9b4);
+    /* linear-gradient(gradi del gradiente, 2+ colori); */
+}
+
+hr {
+    width: 50%;
+}
+
+ul {
+    background-color: white;
+    list-style: none;
+    border: 2px solid black;
+    /* permette di non andare a capo se affiancato ad un elemento */
+    display: inline-block;
+    padding: 10px 30px 10px 20px;
+}
+
+li {
+    padding: 7px;
+    border-bottom: 1px solid black;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+.blueorange li:hover {
+    background-color: blue;
+}
+
+.greenpurple li:hover {
+    background-color: green;
+}
+
+.tarquoisecoral li:hover {
+    background-color: #30d5c8;
+}
+
+.blueorange li:active {
+    color: orange;
+}
+
+.greenpurple li:active {
+    color: purple;
+}
+
+.tarquoisecoral li:active {
+    color: coral;
+}
+
+/* H2 */
+
+.music {
+    color: orange;
+}
+
+.cities {
+    color: green;
+}
+
+.programming-l {
+    color: coral;
+}
+
+/*
+allinearli in verticale?
+
+.sx {
+    display: inline-block;
+}
+
+.v {
+    display: inline-block;
+}
+
+.dx {
+    display: inline-block;
+}
+ */

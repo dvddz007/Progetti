@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relazione sul cavo Ethernet</title>
+    <style>
+        :root {
+            --article: #f6f6f6;
+            --border: #aaaaaa;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 25px;
+        }
+
+        header {
+            text-align: center;
+            margin: 35px 0 50px 0;
+        }
+
+        aside {
+            border: 1px solid var(--border);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        article {
+            background-color: var(--article);
+        }
+        
+        section, article {
+            border: 1px solid var(--border);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        figure {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        figcaption {
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-spacing: 0;
+        }
+
+        td {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 5px;
+        }
+
+        tr > td:first-child {
+            font-weight: bold;
+        }
+
+        button {
+            background-color: lightgrey;
+            padding: 3px;
+            border-radius: 7px;
+        }
+
+        button:hover {
+            background-color: darkgrey;
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="content">
+    <header>
+        <h2>Relazione di laboratorio</h2>
+    </header>
+
+    <aside>
+        <table>
+            <tr>
+                <td>Nome e Cognome:</td>
+                <td>Davide Di Zio</td>
+            </tr>
+            <tr>
+                <td>Classe e Data:</td>
+                <td>3A Info - 21/03/2025</td>
+            </tr>
+        </table>
+    </aside>
+
+    <main>
+        <section>
+            <h2>Relazione sul cavo Ethernet con connettore RJ-45</h2>
+            <article>
+                <h3>Cenni teorici:</h3>
+                <button class="button">Nascondi</button>
+                <div class="content">
+                    <p>
+                        Il cavo Ethernet con connettore RJ-45 è usato per le reti locali (LAN) e consente
+                        la trasmissione di dati tra dispositivi. È diviso in CAT (category) che si differenziano
+                        per velocità e schermatura di protezione dalle interferenze elettromagnetiche (EMI).
+                    </p>
+                    <figure>
+                        <img src="https://instrumentic.info/img/codes-couleurs-rj45-it.jpg" alt="schema">
+                        <figcaption>Schema collegamento dei colori del connettore</figcaption>
+                    </figure>
+                </div>
+            </article>
+
+            <article>
+                <h3>Obiettivo:</h3>
+                <button class="button">Nascondi</button>
+                <div class="content">
+                    <p>
+                        L'obiettivo di questa esperienza è realizzare un cavo Ethernet con connettore RJ-45 partendo da un cavo CAT 5E e due connettori RJ-45.
+                    </p>
+                </div>
+            </article>
+
+            <article>
+                <h3>Materiali e Strumenti:</h3>
+                <button class="button">Nascondi</button>
+                <div class="content">
+                    <ul>
+                        <li>Cavo CAT 5E</li>
+                        <li>Due connettori RJ-45</li>
+                        <li>Forbici</li>
+                        <li>Pinza crimpatrice</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article>
+                <h3>Procedura sperimentale:</h3>
+                <button class="button">Nascondi</button>
+                <div class="content">
+                    <ol>
+                        <li>Spellare con le forbici la guaina del cavo di una lunghezza più o meno della lunghezza del connettore.</li>
+                        <li>Seguendo lo schema dei colori, allineare i cavi nell'ordine indicato.</li>
+                        <li>Tagliare eventuali parti di cavi più lunghi e portare tutti i cavi alla stessa lunghezza.</li>
+                        <li>Inserire i cavi dalla parte dei pin.</li>
+                        <li>Una volta inseriti tutti i cavi correttamente nella struttura di separazione, si può procedere alla crimpatura del connettore.</li>
+                        <li>Eseguire il procedimento su entrambi i lati del cavo CAT per realizzare un cavo ethernet con due connettori.</li>
+                        <li>Verificare con un tester per cavi ethernet per verificare la funzionalità di questi.</li>
+                    </ol>
+                </div>
+            </article>
+
+            <article>
+                <h3>Risultati:</h3>
+                <button class="button">Nascondi</button>
+                <div class="content">
+                    <p>
+                        Il processo è stato eseguito senza particolari difficoltà, riuscendo così a realizzare un cavo ethernet con connettore RJ-45 funzionante.
+                        <br><br>
+                        Durante la procedura, il rischio più grande era quello di effettuare correttamente la crimpatura del connettore, il quale prevederebbe
+                        spesso il taglio del cavo alla parte del connettore.<br> Un altro possibile errore è stato quello di allineare i cavi con una diversa lunghezza
+                        che non permetterebbe il passaggio dei dati ai pin.
+                    </p>
+                </div>
+            </article>
+
+            <article>
+                <h3>Conclusioni:</h3>
+                <button class="button">Nascondi</button>
+                <div class="content">
+                    <p>
+                        Durante questa esperienza ho appreso il funzionamento generale e la realizzazione pratica di un cavo Ethernet.
+                        <br><br>
+                        Ho anche appreso l'importanza della precisione nel caso di cavi la cui lunghezza è necessaria per applicare una crimpatura corretta a un connettore,
+                        mettendo in evidenza anche l'uso di strumenti di verifica.
+                    </p>
+                </div>
+            </article>
+        </section>
+    </main>
+</div>
+
+<script>
+    function hide(button) {
+        // trova il primo tag <article> sopra il tag <button> cliccato
+        const article = button.closest("article");
+        /* si crea un array di elementi con la classe .content. l'indice [0] indica
+         il primo elemento con la classe .content dentro <article> del <button> premuto*/
+        const content = article.getElementsByClassName("content")[0];
+        // se l'elemento con la classe .content ha la classe .hidden
+        if (content.classList.contains("hidden")) {
+            // rimuove la classe .hidden e mostra il contenuto
+            content.classList.remove("hidden");
+            // cambia il testo del <button> in "Nascondi"
+            button.textContent = "Nascondi";
+        } else {
+            // aggiunge la classe .hidden e nasconde il contenuto
+            content.classList.add("hidden");
+            // cambia il testo del <button> in "Mostra"
+            button.textContent = "Mostra";
+        }
+    }
+
+    function show() {
+        // seleziona tutti i <button> con la classe .button
+        const buttons = document.getElementsByClassName("button");
+        // imposta a tutti i <button> l'evento di click
+        for (let i = 0; i < buttons.length; i++) {
+            /* quando il <button> viene cliccato esegue la funzione hide()
+              passando come parametro il <button> premuto */
+            buttons[i].onclick = function() {
+                hide(buttons[i]);
+            };
+        }
+    }
+
+    /* esegue show() quando la pagina html è carica, assicurandosi
+    che tutti gli elementi siano presenti prima di caricare gli eventi */
+    window.onload = show;
+</script>
+</body>
+</html>

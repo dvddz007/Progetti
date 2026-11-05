@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>DOM</title>
+    </head>
+    <body>
+        <div id="dizio"></div>
+        <p id="paragraph">Hello World!</p>
+    </body>
+    <script>
+        const dizio = document.getElementById("dizio");
+        const paragraph = document.getElementById("paragraph");
+        
+        dizio.innerText = "test div";
+
+
+        dizio.style.width = "200px";
+        dizio.style.height = "100px";
+        dizio.style.backgroundColor = "violet";
+        dizio.style.border = "2px solid black";
+        dizio.style.borderColor = "#f00"; // shortcut di #ff0000 
+        dizio.style.color = "#00f";
+        
+        paragraph.style.width = "200px";
+        paragraph.style.height = "200px";
+        paragraph.style.backgroundColor = "#000";
+        paragraph.style.border = "1px solid red";
+        paragraph.style.borderRadius = "50%";
+        paragraph.style.color = "#fff";
+        paragraph.pippo = "qualcosa";
+    </script>
+</html>

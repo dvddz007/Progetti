@@ -1,0 +1,8 @@
+andare nella console sviluppatore e inviare questo script javascript:
+
+document.cookie = "cookies=10000000";
+location.reload();
+
+imposta la variabile cookie a 10M e ricarica la pagina per visualizzare i cambiamenti.
+
+Flag = flag{n3v3r_tru5t_c00k1e5}

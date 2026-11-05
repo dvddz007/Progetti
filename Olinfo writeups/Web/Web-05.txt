@@ -1,0 +1,17 @@
+Stesso procedimento di Web-4. sostituire la lista "headers" in "cookie" e inserire la rappresentazione "password" con la password fornita ("admin").
+
+
+Script:
+
+import requests
+
+url = "http://web-05.challs.olicyber.it/flag"
+
+cookies = {"password": "admin"}
+
+risposta = requests.get(url, cookies=cookies)
+
+print(risposta.text)
+
+
+Flag= flag{v3ry_7457y_c00ki35}

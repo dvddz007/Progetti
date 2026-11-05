@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Slideshow</title>
+        <style>
+            #container {
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                /*gap: 15px;*/
+            }
+
+            #imageContainer {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+            }
+
+            #areaSx, #imageArea, #areaDx {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #img {
+                width: 640px;
+                height: 480px;
+            }
+
+            input[type=button] {
+                padding: 10px;
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <p id="imgCount"></p>
+            <p id="imgCounter">
+                Immagine n.1
+            </p>
+            <div id="imageContainer">
+                <div id="areaSx">
+                    <input type="button" value="<" onclick="scorri(-1)">
+                </div>
+                <div id="imageArea">
+                    <img src="img/0.png" id="img">
+                </div>
+                <div id="areaDx">
+                    <input type="button" value=">" onclick="scorri(1)">
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        /*import path from "path";
+        console.log(path);*/
+
+        // CAMBIA IMMAGINI
+        const imgElem = document.getElementById("img");
+        const imgCountElem = document.getElementById("imgCount");
+        const imgCounterElem = document.getElementById("imgCounter");
+        const imgCount = 7;
+        let index = 0;
+
+        let imagesArr = [];
+        for (let i = 1; i < imgCount + 1; i++) {
+            imagesArr.push(`${i}.png`);
+        }
+        console.log("Immagini: " + imagesArr);
+
+        imgCountElem.innerHTML = "Immagini disponibili: " + imgCount;
+
+        function scorri(value) {
+            index += value;
+            if (index < 0) {
+                index = imgCount-1;
+            } else if (index > imgCount-1) {
+                index = 0;
+            }
+            imgCounterElem.innerHTML = "Immagine n." + parseInt(index + 1);
+            imgElem.src = `img/${index}.png`;
+        }
+    </script>
+</html>

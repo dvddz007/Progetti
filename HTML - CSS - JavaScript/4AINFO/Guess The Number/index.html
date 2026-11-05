@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Guess The Number</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="content">
+            <div class="score-box">
+                SCORE: <span id="score">0</span>
+            </div>
+            <input type="button" value="GIOCA" id="start" class="button" onclick="init(true)">
+            <div id="game-section">
+                <p id="hint">Ho pensato a un numero da 0...100, prova ad indovinarlo!</p>
+                <div class="number-row">
+                    <input type="number" min="0" max="100" id="chosenNumber">
+                    <input type="button" value="PROVA" id="handle-btn" onclick="handle()">
+                </div>
+                <div class="choices">
+                    <input type="button" value="RESET" class="button" id="reset-btn" onclick="init(false)">
+                </div>
+            </div>
+        </div>
+        <div id="tries-box">
+            TENTATIVI PRECEDENTI:
+            <ol id="tries"></ol>
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>

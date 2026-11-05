@@ -1,0 +1,54 @@
+importare la libreria socket che ci permette di comunicare con la rete. creare una funzione che connetta automaticamente al server per 2048 volte. connettersi al server "2048.challs.olicyber.it 10007" per ricevere il primo "livello" del 2048, il server risponderà in questo formato: OPERAZIONE operando 1 operando 2. leggere e fare strip dell'operazione in stringa e applicare l'operazione equivalente ad entrambi gli operandi. infine inviare il risultato dell'operazione al server con il metodo sendall. 
+
+
+Script:
+
+import socket
+
+
+def esegui_operazione(operazione, op1, op2):
+    """Esegue l'operazione matematica richiesta."""
+    op_dict = {
+        "SOMMA": op1 + op2,
+        "DIFFERENZA": op1 - op2,
+        "DIVISIONE_INTERA": op1 // op2 if op2 != 0 else "Errore: divisione per zero",
+        "POTENZA": op1 ** op2,
+        "PRODOTTO": op1 * op2,
+        "MOLTIPLICAZIONE": op1 * op2
+    }
+    return op_dict.get(operazione, "Operazione non supportata")
+
+
+def main():
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.connect(("2048.challs.olicyber.it", 10007))
+
+        while True:
+            # Riceve e analizza la risposta
+            data = s.recv(1024).decode().strip()
+            if not data:
+                break
+
+            print(f"Messaggio ricevuto: {data}")
+            parts = data.split()
+
+            if len(parts) < 3:
+                print("Messaggio non valido")
+                continue
+
+            try:
+                operazione, op1, op2 = parts[0], int(parts[1]), int(parts[2])
+            except ValueError:
+                print("Errore: operandi non validi.")
+                continue
+
+            risultato = esegui_operazione(operazione, op1, op2)
+            s.sendall(f"{risultato}\n".encode())
+            print(f"Inviato al server: {risultato}")
+
+
+if __name__ == "__main__":
+    main()
+
+
+Flag = flag{th3_f45t35t_f1ng3r_1n_cyb3rsp4c3}

@@ -1,0 +1,5 @@
+andare nella sezione Statistiche -> Conversazioni. selezionare le conversazioni con il protocollo TCP (in basso a sinistra), cliccare sulla conversazione e cliccare "Segui il flusso…".
+
+oppure inserire il filtro "tcp", cliccare con il tasto destro sul frame 10 e fare "segui flusso tcp".
+
+Flag = flag{F0lloW_7h3_Wh1t3_5tr3aM_4l1c3}

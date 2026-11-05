@@ -1,0 +1,24 @@
+Inviare una richiesta POST con body json che contenga username e password come "admin". Ciò restituirà un cookie di sessione che dovrà essere usato per inviare 4 richieste get ed ottenere i vari pezzi della flag che una volta concatenati risulteranno nella flag completa.
+
+
+Script:
+
+import requests
+
+# creo una sessione
+session = requests.Session()
+
+# con ["csrf"] accede al valore della chiave csrf
+token = session.post("http://web-11.challs.olicyber.it/login", json={"username": "admin", "password": "admin"}).json()["csrf"]
+
+# stringa che conterrà i pezzi della flag
+flag = ""
+for i in range(4):
+    risposta = session.get("http://web-11.challs.olicyber.it/flag_piece", params={"index": i, "csrf": token}).json()
+    flag = flag + risposta["flag_piece"]
+    token = risposta["csrf"]
+
+print(flag)
+
+
+Flag = flag{v3ry_53ri0u5_53ri35_0f_r3qu3575}

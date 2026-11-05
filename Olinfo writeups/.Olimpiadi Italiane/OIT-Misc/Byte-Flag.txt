@@ -1,0 +1,3 @@
+la flag si trova nelle stringe visualizzate con il comando strings.
+
+Flag = flag{Hex1sntFunn1}

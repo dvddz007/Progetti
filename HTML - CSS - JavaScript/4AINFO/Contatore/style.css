@@ -1,0 +1,87 @@
+:root {
+    --minus-bg: hsl(210, 100%, 50%);
+    --reset-bg: hsl(140, 52%, 55%);
+    --plus-bg: hsl(38, 100%, 55%);
+
+    --minus-bg-dark: hsl(210, 100%, 40%);
+    --reset-bg-dark: hsl(140, 52%, 45%);
+    --plus-bg-dark: hsl(38, 100%, 45%);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f5f8;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.max {
+    margin-left: 20px;
+}
+
+#counter {
+    height: 300px;
+    font-family: 'Georgia', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+    margin: 0; /* x e y */
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+input[type=button] {
+    margin: 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    padding: 20px 40px 20px; /* up left-right down */
+    color: #fff;
+    cursor: pointer;
+}
+
+#minus {
+    background-color: var(--minus-bg);
+}
+
+#minus:hover {
+    background-color: var(--minus-bg-dark);
+}
+
+#reset {
+    background-color: var(--reset-bg);
+}
+
+#reset:hover {
+    background-color: var(--reset-bg-dark);
+}
+
+#plus {
+    background-color: var(--plus-bg);
+}
+
+#plus:hover {
+    background-color: var(--plus-bg-dark);
+}

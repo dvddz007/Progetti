@@ -1,0 +1,3 @@
+la flag è la via del meeting in: https://www.linkedin.com/events/meetingoninfiniteenergy6778803247743340544/
+
+Flag = flag{ViaOliCyber2021}

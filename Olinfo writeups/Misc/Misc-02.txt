@@ -1,0 +1,1 @@
+Misc 02: ricevimento della flag attraverso la sezione "hint".

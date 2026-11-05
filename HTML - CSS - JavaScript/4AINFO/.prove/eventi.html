@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+    <html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Eventi</title>
+    </head>
+    <body>
+        <div>
+            <p id="p-hover" onmouseover="toRed()" onmouseleave="toBlack()">Clicca il pulsante!</p>
+            <input type="button" value="cliccami"
+            onclick="testo();">
+        </div>
+    </body>
+    <script>
+        function testo() {
+            alert("Hai cliccato il pulsante!");
+        }
+
+        function toRed() {
+            let p = document.getElementById("p-hover").style.color = "red";
+        }
+
+        function toBlack() {
+            let p = document.getElementById("p-hover").style.color = "black";
+        }
+    </script>
+</html>

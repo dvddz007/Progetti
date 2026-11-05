@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <script>
+            function ask(question, yes, no) {
+                if (confirm(question)) {
+                    yes();
+                } else {
+                    no();
+                }
+            }
+            
+            function showOk() {
+                console.log("You agreed.");
+            }
+
+            function showCancel() {
+                console.log("You disagreed.");
+            }
+
+            ask("test?", showOk, showCancel);
+
+            // Callback: funzione assegnata come parametro di una funzione.
+        </script>
+    </body>
+</html>

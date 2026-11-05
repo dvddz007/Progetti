@@ -1,0 +1,3 @@
+impostare il filtro HTTP e selezionare il frase 176 con le info "GET / HTTP/1.1". la flag è contenuta in "Hypertext Trasfer Protocol" -> "Flag-String".
+
+Flag = flag{L3aRn1N9_4b0uT_F1lter5_p1}

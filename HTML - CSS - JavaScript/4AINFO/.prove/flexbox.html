@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Flexbox</title>
+        <style>
+
+            html {
+                font-family: sans-serif;
+            }
+
+            body {
+                margin: 0;
+            }
+
+            header.flex {
+                background-color: purple;
+                height: 100px;
+            }
+            
+            h1.flex {
+                text-align: center;
+                color: white;
+                line-height: 100px;
+                margin: 0;
+            }
+            
+            section.flex {
+                display: flex; /* tutti i figli assumono la proprietà flex */
+                flex-direction: row; /* direzione rispetto alla main axis (riga orizzontale) */
+                /* flex-wrap: wrap; /* va a capo se non c'è spazio per gli elementi */
+                /* flex-flow: x; scorciatoia per flex-direction e flex-wrap */
+            }
+
+            article.flex {
+                padding: 10px;
+                margin: 10px;
+                background-color: aqua;
+            }
+            
+            header {
+                background-color: blue;
+            }
+            
+            h1 {
+                color: white;
+            }
+
+            .box {
+                width: 30px;
+                height: 30px;
+                margin: 30px;
+            }
+
+            .red {
+                background-color: red;
+                width: 50px;
+                height: 50px;
+            }
+
+            .green {
+                background-color: green;
+                width: 50px;
+                height: 50px;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .row {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .columns {
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .columns > * {
+                background-color: yellow;
+                margin: 10px 10px;
+                padding: 5px;
+                border-radius: 3px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <header class="flex">
+            <h1 class="flex">Esempio Flexbox</h1>
+        </header>
+        <section class="flex">
+            <article class="flex">
+                <h2>Primo articolo</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora quidem, obcaecati culpa autem aspernatur blanditiis inventore cum. Accusantium omnis a mollitia eaque, perferendis, expedita ab iusto est velit quia repellat.</p>
+            </article>
+            <article class="flex">
+                <h2>Secondo articolo</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, facilis.</p>
+            </article>
+            <article class="flex">
+                <h2>Terzo articolo</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, facilis.</p>
+            </article>
+        </section>
+
+        <hr>
+
+        <section class="container">
+            <section class="row">
+                <article class="box red"></article>
+                <article class="box red"></article>
+                <article class="box red"></article>
+                <article class="box red"></article>
+            </section>
+            <section class="column">
+                <article class="box green"></article>
+                <article class="box green"></article>
+            </section>
+
+            <section class="columns">
+                <article>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Eligendi, rerum, ullam. Ab, commodi culpa ea illum laboriosam laborum maiores molestias necessitatibus neque provident soluta tempora.
+                    Amet animi aperiam at dicta dolor, et expedita ipsa labore libero modi neque non odit praesentium, quam quas quia quisquam rem reprehenderit sint tempore. Illo?
+                </article>
+                <article>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Alias animi architecto beatae commodi culpa cumque distinctio dolore ducimus eligendi et illum impedit incidunt laborum laudantium nam natus nisi odio officiis optio placeat porro quia quidem ratione,
+                    reiciendis repellendus similique sint sunt suscipit tempore ullam ut, veniam vero vitae voluptas voluptatum.
+                </article>
+            </section>
+        </section>
+
+    </body>
+</html>

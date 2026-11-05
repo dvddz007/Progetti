@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Corsi Zyxel</title>
+        <style>
+            :root {
+                --article-bg: #f2f2f2;
+                --border: #aaaaaa;
+                --button-bg: #64BE00;
+                --button-bg-hover: #4F9E00;
+            }
+
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 25px;
+            }
+
+            table {
+                width: 100%;
+                border-spacing: 3px;
+            }
+
+            td {
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 5px;
+            }
+
+            tr > td:first-child {
+                font-weight: bold;
+            }
+
+            header {
+                text-align: center;
+                margin: 35px 0 50px 0;
+            }
+
+            aside, nav {
+                border: 1px solid var(--border);
+                padding: 10px;
+                border-radius: 8px;
+            }
+
+            article {
+                background-color: var(--article-bg);
+            }
+
+            section, article {
+                border: 1px solid var(--border);
+                padding: 15px;
+                border-radius: 8px;
+            }
+
+            section:not(:first-child), article:not(:first-child) {
+                margin-bottom: 15px;
+            }
+
+            ul, ol {
+                padding-left: 20px;
+            }
+
+            li {
+                margin-bottom: 5px;
+            }
+
+            nav {
+                text-align: center;
+            }
+
+            a {
+                color: blue;
+                text-decoration: none;
+            }
+
+            button {
+                box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.5);
+            }
+
+            .corso {
+                margin: 20px 25px 20px 25px;
+                background-color: var(--button-bg);
+                color: white;
+                padding: 15px 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                /* transizione in e out */
+                transition: transform 200ms, background-color 200ms;
+            }
+
+            .corso:hover {
+                background-color: var(--button-bg-hover);
+                transform: scale(1.1);
+            }
+
+            #intro {
+                text-align: center;
+                font-size: 16px;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            .bold {
+                font-weight: bold;
+            }
+
+            .tooltip {
+                border-bottom: 2px dashed #3b82f6;
+                cursor: help;
+            }
+
+            .fonte {
+                text-align: center;
+                margin-top: 30px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="content">
+            <header>
+                <h2>Riassunto Corsi Nebula - Sistemi e Reti</h2>
+            </header>
+
+            <aside>
+                <table>
+                    <tr>
+                        <td>Nome e Cognome:</td>
+                        <td>Davide Di Zio</td>
+                    </tr>
+                    <tr>
+                        <td>Classe e Data:</td>
+                        <td>3A Info - 28/04/2025</td>
+                    </tr>
+                </table>
+            </aside>
+
+            <main>
+                <section id="intro">
+                    <h2>Selezionare un corso da visualizzare</h2>
+                </section>
+
+                <nav>
+                    <button class="corso" id="nebula-btn" onclick="showSection('nebula')">ZCNA Nebula</button>
+                    <button class="corso" id="security-btn" onclick="showSection('security')">ZCNA Security</button>
+                    <button class="corso" id="switch-btn" onclick="showSection('switch')">ZCNA Switch</button>
+                    <button class="corso" id="wlan-btn" onclick="showSection('wlan')">ZCNA WLAN</button>
+                </nav>
+
+                <section id="nebula" class="hidden">
+                    <h2>ZCNA Nebula</h2>
+                    <article>
+                        <h3>1. Introduzione</h3>
+                        <p>In passato, la gestione delle reti era prevalentemente locale, con dispositivi e amministratori fisicamente presenti nello stesso centro dati per garantire una maggiore sicurezza e una risoluzione immediata dei problemi.<br>
+                            Con l’espansione delle aziende e l’introduzione della pandemia, si è diffusa la gestione da remoto, in particolare tramite piattaforme cloud, che permettono agli amministratori di gestire le reti ovunque si trovino.<br>
+                            Nel 2021, oltre la metà delle aziende ha delegato la gestione delle proprie infrastrutture informatiche a fornitori esterni.</p>
+                    </article>
+                    <article>
+                        <h3>2. Portafoglio Prodotti</h3>
+                        <p>Le piattaforme di gestione delle reti via cloud offrono numerosi vantaggi.<br>
+                            Questi strumenti includono un’interfaccia web centralizzata per la configurazione e il monitoraggio di dispositivi di rete come firewall, switch e access point.<br>
+                            Inoltre, permettono una scalabilità <!-- capacità di adattarsi --> rapida della rete, aggiungendo nuovi dispositivi da remoto, e integrano servizi cloud per la gestione di dati, utenti ed email.</p>
+                    </article>
+                    <article>
+                        <h3>3. Caratteristiche della Piattaforma</h3>
+                        <ul>
+                            <li>Sicurezza avanzata tramite strumenti come l’UTM (Unified Threat Management), che blocca o mette in quarantena dispositivi compromessi direttamente nel perimetro di rete.</li>
+                            <li>Generazione di topologie di rete, per visualizzare la struttura della rete e identificare i PoF (Points of Failure).</li>
+                            <li>Configurazione VLAN semplificata, per separare il traffico di rete tra diversi gruppi di utenti o dispositivi.</li>
+                            <li>Ottimizzazione delle connessioni wireless, con supporto per miglioramenti automatici della stabilità delle reti.</li>
+                            <li>Configurazione automatica di VPN, per garantire connessioni sicure tra sedi distanti.</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>4. Gestione di Dispositivi via Cloud</h3>
+                        <p>La gestione dei dispositivi è resa ancora più efficiente tramite le piattaforme cloud.<br>
+                            Le organizzazioni possono creare siti virtuali, assegnare dispositivi tramite identificatori univoci (come indirizzi MAC o numeri seriali) e utilizzare procedure di provisioning <!-- fase di preparazione --> automatico, riducendo così il tempo necessario per l'installazione e la configurazione delle reti.<br>
+                            La rete può essere implementata rapidamente attraverso file ZTP, velocizzando l'intero processo.</p>
+                    </article>
+                    <article>
+                        <h3>5. Utility ZON</h3>
+                        <p>Le utility ZON sono strumenti di rilevamento e configurazione rapida dei dispositivi in rete, essenziali per la fase iniziale di configurazione o durante le fasi di manutenzione.<br>
+                            Questi strumenti semplificano il lavoro di amministrazione e garantiscono una gestione ottimale della rete.</p>
+                    </article>
+                    <article>
+                        <h3>6. Implementazione: Rete per Piccole Imprese</h3>
+                        <p>Nelle piccole reti aziendali, una pratica comune è creare due sottoreti distinte:</p>
+                        <ul>
+                            <li>Una rete interna per i dipendenti, dedicata alla gestione di dati sensibili e dispositivi aziendali.</li>
+                            <li>Una rete guest per i clienti o visitatori, che consente l'accesso sicuro a Internet senza compromettere la rete interna.</li>
+                        </ul>
+                    </article>
+                    <div class="fonte">
+                        <p>Fonte video: <a title="Zyxel Nebula" href="https://educationcenter.zyxel.com/course/zcna-nebula-english">ZCNA Nebula</a></p>
+                    </div>
+                </section>
+
+                <section id="security" class="hidden">
+                    <h2>ZCNA Security</h2>
+                    <article>
+                        <h3>01: Evoluzione della Sicurezza di Rete</h3>
+                        <p>Con l'aumento delle minacce informatiche e la crescente complessità delle infrastrutture IT, le aziende hanno dovuto adottare soluzioni di sicurezza più robuste.<br>
+                            L'implementazione di firewall avanzati e la gestione centralizzata delle politiche di sicurezza sono diventate essenziali per proteggere le risorse aziendali.</p>
+                    </article>
+                    <article>
+                        <h3>02: Gestione Centralizzata dei Dispositivi</h3>
+                        <p>Utilizzare strumenti di gestione centralizzata consente agli amministratori di rete di monitorare e configurare dispositivi da un'unica interfaccia.<br>
+                            Questo approccio semplifica la gestione, riduce gli errori e migliora la reattività in caso d'incidenti di sicurezza.</p>
+                    </article>
+                    <article>
+                        <h3>03: Configurazione Iniziale e Impostazioni delle Interfacce</h3>
+                        <p>Durante la configurazione iniziale di un firewall, è fondamentale definire correttamente le interfacce di rete, assegnare indirizzi IP appropriati e stabilire le zone di sicurezza.<br>
+                            Una configurazione accurata garantisce un controllo efficace del traffico e una segmentazione adeguata della rete.</p>
+                    </article>
+                    <article>
+                        <h3>04: NAT (Network Address Translation)</h3>
+                        <p>Il NAT è una tecnica che permette di mappare indirizzi IP privati a indirizzi IP pubblici, facilitando la connessione a Internet e migliorando la sicurezza interna.<br>
+                            Configurare correttamente il NAT è cruciale per garantire la comunicazione tra reti interne ed esterne.</p>
+                    </article>
+                    <article>
+                        <h3>05: Politiche di Sicurezza</h3>
+                        <p>Le politiche di sicurezza definiscono le regole che determinano il traffico consentito o bloccato attraverso il firewall.<br>
+                            Stabilire regole precise in base a indirizzi IP, porte e protocolli è essenziale per proteggere la rete da accessi non autorizzati.</p>
+                    </article>
+                    <article>
+                        <h3>06: VPN L2TP (Layer 2 Tunneling Protocol)</h3>
+                        <p>Le VPN L2TP consentono connessioni sicure tra utenti remoti e la rete aziendale.<br>
+                            Configurare una VPN L2TP implica l'impostazione di protocolli di autenticazione, assegnazione d'indirizzi IP e definizione delle politiche di accesso.</p>
+                    </article>
+                    <article>
+                        <h3>07: Servizi di Sicurezza Avanzati</h3>
+                        <p>Implementare servizi di sicurezza come antivirus, filtraggio dei contenuti e rilevamento delle intrusioni aiuta a proteggere la rete da minacce esterne.<br>
+                            Questi servizi monitorano il traffico in tempo reale e intervengono automaticamente in caso di anomalie.</p>
+                    </article>
+                    <article>
+                        <h3>08: Controllo degli Access Point</h3>
+                        <p>Gestire gli access point attraverso il firewall permette di controllare l'accesso wireless alla rete, applicare politiche di sicurezza uniformi e monitorare le attività degli utenti connessi.</p>
+                    </article>
+                    <article>
+                        <h3>09: Soluzioni Cloud per la Sicurezza</h3>
+                        <p>L'adozione di soluzioni cloud per la gestione della sicurezza offre flessibilità e scalabilità.<br>
+                            Le piattaforme cloud consentono agli amministratori di configurare, monitorare e aggiornare le politiche di sicurezza da qualsiasi luogo, facilitando la gestione di reti distribuite.</p>
+                    </article>
+                    <div class="fonte">
+                        <p>Fonte video: <a title="Zyxel Security" href="https://educationcenter.zyxel.com/course/zcna-security-english">ZCNA Security</a></p>
+                    </div>
+                </section>
+
+                <section id="switch" class="hidden">
+                    <h2>ZCNA Switch</h2>
+                    <article>
+                        <h3>01: Introduzione agli Switch di Rete</h3>
+                        <p>Gli switch sono componenti essenziali nelle infrastrutture di rete, permettendo la connessione e la comunicazione efficiente tra dispositivi all'interno di una LAN.<br>
+                            La loro configurazione e gestione adeguata sono cruciali per garantire prestazioni ottimali e sicurezza.</p>
+                    </article>
+                    <article>
+                        <h3>02: Configurazioni di Base e Generali</h3>
+                        <p>La configurazione iniziale di uno switch include l'assegnazione d'indirizzi IP, la definizione delle interfacce di rete e l'impostazione delle credenziali di accesso.<br>
+                            Una configurazione corretta facilita la gestione e il monitoraggio del dispositivo.</p>
+                    </article>
+                    <article>
+                        <h3>03: Power over Ethernet (PoE)</h3>
+                        <p>La tecnologia PoE consente agli switch di fornire alimentazione elettrica ai dispositivi connessi, come access point o telecamere IP, attraverso il cavo Ethernet.<br>
+                            Questo semplifica l'installazione e riduce la necessità di cablaggi separati per l'alimentazione.</p>
+                    </article>
+                    <article>
+                        <h3>04: VLAN (Virtual LAN)</h3>
+                        <p>Le VLAN permettono di segmentare una rete fisica in più reti logiche, migliorando la sicurezza e l'efficienza del traffico.<br>
+                            Configurare correttamente le VLAN consente d'isolare gruppi di dispositivi e gestire il traffico in modo più efficace.</p>
+                    </article>
+                    <article>
+                        <h3>05: Aggregazione di Link (Link Aggregation)</h3>
+                        <p>L'aggregazione di link combina più connessioni fisiche in un unico collegamento logico, aumentando la larghezza di banda disponibile e fornendo ridondanza.<br>
+                            Questo migliora le prestazioni e la resilienza della rete.</p>
+                    </article>
+                    <article>
+                        <h3>06: Controllo della Larghezza di Banda</h3>
+                        <p>Il controllo della larghezza di banda consente di gestire e limitare la quantità di traffico che può attraversare una porta dello switch, garantendo che le risorse di rete siano distribuite equamente e prevenendo congestioni.</p>
+                    </article>
+                    <article>
+                        <h3>07: Protezione dai Loop e Failover</h3>
+                        <p>I loop di rete possono causare gravi problemi di prestazioni.<br>
+                            Implementare meccanismi di protezione dai loop e configurare strategie di <span class="tooltip" title="Una strategia di failover è un piano o un insieme di tecniche pensate per garantire che un sistema, una rete o un'applicazione continui a funzionare anche se un componente principale si guasta.">failover</span> assicura che la rete rimanga operativa anche in caso di guasti o configurazioni errate.</p>
+                    </article>
+                    <article>
+                        <h3>08: Gestione e Manutenzione</h3>
+                        <p>La gestione efficace degli switch include il monitoraggio delle prestazioni, l'aggiornamento del firmware e la pianificazione della manutenzione preventiva.<br>
+                            Utilizzare strumenti di gestione centralizzata facilita queste attività e migliora la visibilità sulla rete.</p>
+                    </article>
+                    <article>
+                        <h3>09: Soluzioni Cloud per la Gestione degli Switch</h3>
+                        <p>L'adozione di soluzioni cloud per la gestione degli switch offre vantaggi come l'accesso remoto, la scalabilità e la facilità di configurazione.<br>
+                            Queste piattaforme permettono agli amministratori di rete di gestire dispositivi distribuiti da un'unica interfaccia.</p>
+                    </article>
+                    <div class="fonte">
+                        <p>Fonte video: <a title="Zyxel Switch" href="https://educationcenter.zyxel.com/course/zcna-switch-english">ZCNA Switch</a></p>
+                    </div>
+                </section>
+
+                <section id="wlan" class="hidden">
+                    <h2>ZCNA WLAN</h2>
+                    <article>
+                        <h3>1. Evoluzione delle Reti Wireless</h3>
+                        <p>Il mercato delle reti wireless è in continua espansione grazie alla crescente domanda di connessioni mobili rapide e affidabili.<br>
+                            Gli sviluppi tecnologici e l'adozione di nuovi standard Wi-Fi hanno reso la WLAN una componente essenziale delle reti aziendali moderne.</p>
+                    </article>
+                    <article>
+                        <h3>2. Fondamenti delle WLAN</h3>
+                        <p>Le reti WLAN (Wireless Local Area Network) permettono la connessione di dispositivi senza l'uso di cavi fisici, utilizzando segnali radio.<br>
+                            Gli elementi fondamentali di una WLAN sono:</p>
+                        <ul>
+                            <li><span class="bold">Radiofrequenze (RF)</span>: Le comunicazioni wireless avvengono attraverso bande di frequenza specifiche (es. 2.4 GHz e 5 GHz).</li>
+                            <li><span class="bold">Antenne</span>: Componenti cruciali che determinano la copertura e la qualità del segnale, con diversi tipi a seconda delle esigenze d'installazione.</li>
+                            <li><span class="bold">Standard Wi-Fi</span>: La connettività wireless è regolata da standard internazionali (es. IEEE 802.11a/b/g/n/ac/ax) che stabiliscono velocità, portata e frequenze operative.</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>3. Gestione delle Reti Wireless</h3>
+                        <p>Due approcci principali nella gestione di una rete wireless:</p>
+                        <ul>
+                            <li><span class="bold">Controller-based</span>: Gli access point sono gestiti da un controller centralizzato che coordina configurazioni, autenticazioni e ottimizzazioni di rete.</li>
+                            <li><span class="bold">Cloud-based</span> (es. soluzioni tipo Nebula): Permette la gestione remota e centralizzata degli access point tramite piattaforme cloud, migliorando la scalabilità e la facilità di configurazione.</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>4. Strumenti di Supporto</h3>
+                        <p>Strumenti di utility di rete aiutano a rilevare, configurare e diagnosticare dispositivi wireless all'interno di una rete, velocizzando la fase di setup e manutenzione.</p>
+                    </article>
+                    <article>
+                        <h3>5. Configurazione Iniziale</h3>
+                        <p>La configurazione iniziale di una rete wireless prevede:</p>
+                        <ul>
+                            <li>L'assegnazione di SSID (nome della rete).</li>
+                            <li>L'impostazione della sicurezza (es. WPA2, WPA3).</li>
+                            <li>La scelta dei canali radio per ridurre interferenze.</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>6. Deployment di Reti Wireless</h3>
+                        <p>Durante la progettazione e installazione di una rete wireless è importante:</p>
+                        <ul>
+                            <li>Analizzare l’ambiente (ostacoli fisici, interferenze).</li>
+                            <li>Pianificare la posizione degli access point per garantire copertura omogenea.</li>
+                            <li>Eseguire site survey (sopralluoghi wireless) per validare le prestazioni della rete.</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>7. Ottimizzazione della Banda 5 GHz</h3>
+                        <p>Per migliorare la qualità della connessione, è consigliato dare priorità alla banda 5 GHz:</p>
+                        <ul>
+                            <li>Offre maggiore velocità di trasmissione.</li>
+                            <li>Ha meno interferenze rispetto alla banda 2.4 GHz.</li>
+                            <li>Ideale per ambienti con alta densità di dispositivi.</li>
+                        </ul>
+                    </article>
+                    <div class="fonte">
+                        <p>Fonte video: <a title="Zyxel WLAN" href="https://educationcenter.zyxel.com/course/zcna-wlan-english">ZCNA WLAN</a></p>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <script>
+            // prende come parametro l'id passato al bottone nella sezione dell'html
+            function showSection(sectionId) {
+                // seleziona tutte le sezioni
+                const sections = document.querySelectorAll('section');
+                // le nasconde (compresa #intro)
+                sections.forEach(section => section.classList.add('hidden'));
+
+                // match-case
+                /* il break serve per non andare in "fall-trough", dove il flusso del codice
+                 continua ad andare avanti all'infinito o fino a un default: (case _:) */
+                switch (sectionId) {
+                    case 'nebula':
+                        document.getElementById('nebula').classList.remove('hidden');
+                        break;
+                    case 'security':
+                        document.getElementById('security').classList.remove('hidden');
+                        break;
+                    case 'switch':
+                        document.getElementById('switch').classList.remove('hidden');
+                        break;
+                    case 'wlan':
+                        document.getElementById('wlan').classList.remove('hidden');
+                        break;
+                }
+            }
+        </script>
+    </body>
+</html>

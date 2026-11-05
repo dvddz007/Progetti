@@ -1,0 +1,7 @@
+scaricare il file audio e importarlo su un sito che sia in grado di convertire l'audio morse in testo.
+
+
+Sito: https://morsecode.world/international/decoder/audio-decoder-adaptive.html
+
+
+Flag = flag{prisencolinensinainciusol}

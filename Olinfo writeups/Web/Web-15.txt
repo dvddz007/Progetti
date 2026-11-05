@@ -1,0 +1,23 @@
+Importare le librerie, scaricare la pagina html, cerca in tutti i tag <script>, <link>, <img>, se esistenti, gli attributi src e href e fa la richiesta get del percorso assoluto di ogni file javascript o css. Se trova la stringa "flag{" la stampa.
+
+
+Script:
+
+import requests
+from bs4 import BeautifulSoup
+
+url = "http://web-15.challs.olicyber.it/"
+
+html = BeautifulSoup(requests.get(url).text, "html.parser")
+
+risorse = [url + tag.get(attr).lstrip("/")
+           for tag in html.find_all(["script", "link", "img"])
+           for attr in ["src", "href"] if tag.get(attr)]
+
+for risorsa_url in risorse:
+    risposta = requests.get(risorsa_url)
+    if "flag{" in risposta.text:
+        print(risposta.text)
+
+
+Flag = flag{5n00ping_4r0und}

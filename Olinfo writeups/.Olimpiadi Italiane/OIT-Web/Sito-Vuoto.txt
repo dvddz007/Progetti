@@ -1,0 +1,4 @@
+la prima parte della flag si trova sotto il title nell'html. la seconda si trova nel css. la terza si trova nello script.js.
+
+
+Flag = flag{you_can_t_see_me_in_the_browser}

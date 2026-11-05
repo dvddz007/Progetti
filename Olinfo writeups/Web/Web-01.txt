@@ -1,0 +1,16 @@
+Installare la libreria requests tramite pip ed eseguire uno script che manda una richiesta get al sito indicato.
+
+
+Script:
+
+import requests
+
+url = "http://web-01.challs.olicyber.it/"
+
+risposta = requests.get(url)
+
+print(risposta.text)
+
+
+Flag = flag{g3t7ing_4l0ng}
+
