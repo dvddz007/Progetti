@@ -1,3 +1,6 @@
+# Eseguibili e file generati dalla compilazione
+build/
+
 # File generati dalla compilazione
 *.exe
 *.o
