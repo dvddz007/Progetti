@@ -27,9 +27,15 @@
             --box3bg: green;
             --box3hover: #006600;
             --box3active: #004d00;
-            --startBtnBg: #0095ff;
-            --startBtnHover: #07c;
-            --startBtnActive: #0064bd;
+            --btnsBg: #0095ff;
+            --btnsHover: #07c;
+            --btnsActive: #0064bd;
+            --box4bg: #ea580c;
+            --box4hover: #c2410c;
+            --box4active: #9a3412;
+            --box5bg: #9333ea;
+            --box5hover: #7e22ce;
+            --box5active: #6b21a8;
         }
 
         body {
@@ -125,25 +131,49 @@
         #combinazioneBox .box:nth-child(3):active {
             background-color: var(--box3active);
         }
+        
+        #combinazioneBox .box:nth-child(4) {
+            background-color: var(--box4bg);
+        }
 
-        #startBtn {
-            background-color: var(--startBtnBg);
+        #combinazioneBox .box:nth-child(4):hover {
+            background-color: var(--box4hover);
+        }
+
+        #combinazioneBox .box:nth-child(4):active {
+            background-color: var(--box4active);
+        }
+
+        #combinazioneBox .box:nth-child(5) {
+            background-color: var(--box5bg);
+        }
+
+        #combinazioneBox .box:nth-child(5):hover {
+            background-color: var(--box5hover);
+        }
+
+        #combinazioneBox .box:nth-child(5):active {
+            background-color: var(--box5active);
+        }
+
+        #startBtn, #deleteBtn {
+            background-color: var(--btnsBg);
             border: 1px solid transparent;
             padding: 15px 18px;
             border-radius: 5px;
             color: #ffffff;
         }
 
-        #startBtn.hidden {
+        #startBtn.hidden, #deleteBtn.hidden {
             visibility: hidden;
         }
 
-        #startBtn:hover {
-            background-color: var(--startBtnHover);
+        #startBtn:hover, #deleteBtn:hover {
+            background-color: var(--btnsHover);
         }
 
-        #startBtn:active {
-            background-color: var(--startBtnActive);
+        #startBtn:active, #deleteBtn:active {
+            background-color: var(--btnsActive);
         }
 
         .vinto, .corretto {
@@ -159,17 +189,22 @@
             <div id="sequenzaBox">
                 <p id="testo">Clicca per iniziare</p>
                 <div id="sequenza" class="hidden">
-                    <div>1</div>
-                    <div>2</div>
-                    <div>3</div>
+                    <div class="sequenzaNums"></div>
+                    <div class="sequenzaNums"></div>
+                    <div class="sequenzaNums"></div>
+                    <div class="sequenzaNums"></div>
+                    <div class="sequenzaNums"></div>
                 </div>
             </div>
             <div id="combinazioneBox">
                 <div class="box">1</div>
                 <div class="box">2</div>
                 <div class="box">3</div>
+                <div class="box">4</div>
+                <div class="box">5</div>
             </div>
-            <input type="button" id="startBtn" value="Start">
+            <input type="button" id="startBtn" value="START">
+            <input type="button" id="deleteBtn" class="hidden" value="CANCELLA">
         </div>
     </body>
     <script defer>
@@ -177,10 +212,12 @@
         const testo = document.getElementById("testo");
         const sequenzaElem = document.getElementById("sequenza");
         const startBtnElem = document.getElementById("startBtn");
+        const deleteBtnElem = document.getElementById("deleteBtn");
         const boxElems = document.querySelectorAll(".box");
         // const sequenzaElemArr = sequenzaElem.children;   HTMLCollection != Array
         // HTMLCollection non supporta il foreach
-        const sequenzaElemArr = Array.from(sequenzaElem.children);
+        //const sequenzaArr = Array.from(sequenzaElem.children);
+        const sequenzaArr = document.querySelectorAll(".sequenzaNums");
         let vinto;
         let sequenzaDaIndovinare;
         let timerMostra;
@@ -195,12 +232,13 @@
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
-        function sequenzaCasuale(max=3) {
+        function sequenzaCasuale() {
             /*
                 Restituisce un array contenente n numeri casuali da indovinare.
+                Si adatta in base a quanti div hanno la classe "sequenzaNums" e restituisce un array con la stessa lunghezza.
             */
             const arr = [];
-            for (let i=0; i<max; i++) {
+            for (let i=0; i<sequenzaArr.length; i++) {
                 arr.push(numeroCasuale());
             }
             return arr;
@@ -209,7 +247,6 @@
         function salvaTentativo(elemento) {
             /*
                 Salva nell'array tentativiArr un elemento SOLO se l'array non supera la lunghezza della sequenza.
-                // Restituisce l'elemento aggiunto all'array per debug (?).
             */
             if (tentativiArr.length >= sequenzaDaIndovinare.length) {
                 return;
@@ -231,29 +268,24 @@
             for (let i=0; i<sequenzaDaIndovinare.length; i++) {
                 if (sequenzaDaIndovinare[i] !== tentativiArr[i]) {
                     vinto = false;
-                    sequenzaElemArr[i].classList.add("errato");
+                    sequenzaArr[i].classList.add("errato");
                 } else {
-                    sequenzaElemArr[i].classList.add("corretto");
+                    sequenzaArr[i].classList.add("corretto");
                 }
             }
             //vinto = sequenzaDaIndovinare.toString() === tentativiArr.toString();
             return;
         }
 
-
-        boxElems.forEach((box)=> {
-            box.addEventListener("click", (event)=> {
-                if (!puoCliccare) {
-                    return;
-                }
-                console.log(`cliccato ${event.target.textContent}`);
-                salvaTentativo(Number(event.target.textContent));
-                console.log(tentativiArr);
+        function mostraSequenzaDaIndovinare() {
+            sequenzaArr.forEach((box, index)=> {
+                // inserisce nei vari box il numero da indovinare con indice crescente
+                box.textContent = String(sequenzaDaIndovinare[index]);
             });
-        });
+            return;
+        }
 
-        startBtnElem.addEventListener("click", ()=> {
-            startBtnElem.classList.add("hidden");
+        function preparaPartita() {
             // cancello i timer delle partite precedenti
             clearTimeout(timerMostra);
             clearTimeout(timerIndovina);
@@ -264,26 +296,52 @@
             sequenzaDaIndovinare = sequenzaCasuale();
             sequenzaElem.classList.remove("hidden");
             sequenzaElem.classList.remove("vinto", "perso");
-            sequenzaElemArr.forEach((box) => {
+            sequenzaArr.forEach((box) => {
                 box.classList.remove("corretto", "errato");
             });
-            sequenzaElemArr.forEach((box, index)=> {
-                box.textContent = String(sequenzaDaIndovinare[index]);
+        }
+
+
+        boxElems.forEach((box)=> {
+            box.addEventListener("click", (event)=> {
+                // salva il numero cliccato in tentativiArr SE puoi cliccare.
+                if (!puoCliccare) {
+                    return;
+                }
+                console.log(`cliccato ${event.target.textContent}.`);
+                salvaTentativo(Number(event.target.textContent));
+                console.log(tentativiArr);
             });
+        });
+
+        deleteBtnElem.addEventListener("click", ()=> {
+            if (tentativiArr.length <= 0) {
+                console.log("nessun numero da rimuovere.")
+                return;
+            }
+            const x = tentativiArr.pop();
+            console.log(`rimosso ${x}.`);
+            console.log(tentativiArr);
+            return;
+        })
+
+        startBtnElem.addEventListener("click", ()=> {
+            startBtnElem.classList.add("hidden");
+            preparaPartita();
+            mostraSequenzaDaIndovinare();
             console.log("start timer memorizzazione.")
             timerMostra = setTimeout(()=> {
                 testo.textContent = "Riproduci la sequenza";
-                sequenzaElemArr.forEach((box) => {
+                sequenzaArr.forEach((box) => {
                     box.textContent = "?";
                 });
                 puoCliccare = true;
+                deleteBtnElem.classList.remove("hidden");
                 console.log("start timer indovino.")
                 timerIndovina = setTimeout(()=> {
                     puoCliccare = false;
                     controllaVittoria();
-                    sequenzaElemArr.forEach((box, index) => {
-                        box.textContent = String(sequenzaDaIndovinare[index]);
-                    });
+                    mostraSequenzaDaIndovinare();
                     setTimeout(() => {
                         /*
                             Imposto un timeout di 1ms perchè l'alert è una funzione sincrona;
@@ -299,6 +357,7 @@
                     }, 1);
                     testo.textContent = "Gioca ancora?"
                     startBtnElem.classList.remove("hidden");
+                    deleteBtnElem.classList.add("hidden");
                 }, 5000);
             }, 4000); 
         });
