@@ -1,6 +1,8 @@
 #include <stdio.h>
 
 
+int sommaCifre(int n);
+
 int main(void) {
     /*
         - Leggi un intero tra 0 e 1000000, controllando lettura e intervallo.
