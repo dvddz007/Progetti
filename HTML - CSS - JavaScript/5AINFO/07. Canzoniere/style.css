@@ -1,0 +1,100 @@
+:root {
+    --bodyBg: #080D18;
+    --containerBg: #111C2E;
+    --containerBorder: #26354B;
+    --textColor: #E7EDF7;
+    --addBtn: blue;
+    --addBtnHover: #0000cc;
+    --addBtnActive: #000099;
+    --printBtn: green;
+    --printBtnHover: #006600;
+    --printBtnActive: #004d00;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100dvh; /* l'altezza del body puó crescere */
+    width: 100%;
+    background: var(--bodyBg);
+    color: var(--textColor);
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    gap: 10dvh;
+    background: var(--containerBg);
+    border: 1px solid var(--containerBorder);
+    border-radius: 10px;
+    padding: 3dvh;
+}
+
+#printNode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+hr {
+    width: 25dvh;
+}
+
+#text, #formBox, #print {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#formBox {
+    gap: 5dvh;
+}
+
+#titleBox, #authorBox, #yearBox, #genreBox {
+    display: flex;
+    flex-direction: column;
+}
+
+#optionsBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2dvh;
+}
+
+#optionsBox > * {
+    border: 1px solid transparent;
+    padding: 12px 18px;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+#addBtn {
+    background-color: var(--addBtn);
+}
+
+#addBtn:hover {
+    background-color: var(--addBtnHover);
+}
+
+#addBtn:active {
+    background-color: var(--addBtnActive);
+}
+
+#printBtn {
+    background-color: var(--printBtn);
+}
+
+#printBtn:hover {
+    background-color: var(--printBtnHover);
+}
+
+#printBtn:active {
+    background-color: var(--printBtnActive);
+}
