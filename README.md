@@ -9,6 +9,7 @@ Raccolta personale e scolastica di esercizi, appunti e progetti di informatica.
 - HTML, CSS e JavaScript
 - Python
 - PHP
+- SQL
 - Linux e PowerShell
 - Progetti droni DJITelloPy
 - Writeup di esercizi e competizioni
