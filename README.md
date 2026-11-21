@@ -18,6 +18,6 @@ Raccolta personale e scolastica di esercizi, appunti e progetti di informatica.
 
 ## Ambiente di lavoro
 
-Windows 11 con WSL 2, Visual Studio Code e GCC.
+Windows 11 con WSL 2, Visual Studio Code, yEd, XAMPP e GCC.
 
 I file possono (sicuramente) contenere esercizi incompleti o tentativi di apprendimento.
