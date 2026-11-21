@@ -3,13 +3,46 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Canzoniere</title>
         <link rel="stylesheet" href="style.css">
         <script src="script.js" defer></script>
     </head>
     <body>
-        
+        <div id="container">
+            <div>
+                <p id="text">Compilare i campi sottostanti</p>
+                <div id="printNode"></div>
+                <div id="formBox">
+                    <div id="titleBox">
+                        <p>Titolo della canzone:</p>
+                        <input type="text" id="title" placeholder="es: Bohemian Rhapsody">
+                    </div>
+                    <div id="authorBox">
+                        <p>Autore:</p>
+                        <input type="text" id="author" placeholder="es: Queen">
+                    </div>
+                    <div id="yearBox">
+                        <p>Anno di rilascio:</p>
+                        <input type="text" id="year" placeholder="es: 1975">
+                    </div>
+                    <div id="genreBox">
+                        <p>Genere:</p>
+                        <select id="genreSelect">
+                            <option value="" selected></option>
+                            <option value="Pop">Pop</option>
+                            <option value="Rock">Rock</option>
+                            <option value="Metal">Metal</option>
+                            <option value="Classica">Classica</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div id="optionsBox">
+                    <input type="button" id="addBtn" value="Aggiungi">
+                    <input type="button" id="printBtn" value="Stampa">
+                </div>
+            </div>
+        </div>
     </body>
-    <!--  defer viene eseguito di default con il js inline --> 
-    <!-- <script></script> -->
 </html>
