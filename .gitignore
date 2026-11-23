@@ -26,4 +26,4 @@ node_modules/
 # File generati da Windows
 Thumbs.db
 Desktop.ini
-.Identifier
+*.Identifier
