@@ -1,10 +1,10 @@
-# Percorso di informatica
+# Computer Science Learning Path
 
-Raccolta di esercizi, appunti e progetti scolastici e personali.
+Collection of personal and school-related exercises, notes, and projects.
 
-## Contenuti
+## Contents
 
-- C, Python, JavaScript e PHP
-- HTML, CSS e SQL
-- Linux e PowerShell
-- Progetti ed esperimenti di informatica
+- C, Python, JavaScript and PHP
+- HTML, CSS and SQL
+- Linux and PowerShell
+- Programming projects and experiments
