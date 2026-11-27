@@ -1,23 +1,10 @@
 # Percorso di informatica
 
-Raccolta personale e scolastica di esercizi, appunti e progetti di informatica.
-
+Raccolta di esercizi, appunti e progetti scolastici e personali.
 
 ## Contenuti
 
-- C
-- HTML, CSS e JavaScript
-- Python
-- PHP
-- SQL
+- C, Python, JavaScript e PHP
+- HTML, CSS e SQL
 - Linux e PowerShell
-- Progetti droni DJITelloPy
-- Writeup di esercizi e competizioni
-- Esperimenti con l'AI
-
-
-## Ambiente di lavoro
-
-Windows 11 con WSL 2, Visual Studio Code, yEd, XAMPP e GCC.
-
-I file possono (sicuramente) contenere esercizi incompleti o tentativi di apprendimento.
+- Progetti ed esperimenti di informatica

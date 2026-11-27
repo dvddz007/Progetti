@@ -1,29 +1,50 @@
-# Eseguibili e file generati dalla compilazione
-build/
-
-# File generati dalla compilazione
-*.exe
-*.o
-*.obj
-
-# Cache e ambienti virtuali Python
+# PYTHON
 __pycache__/
-*.pyc
+*.py[cod]
 .venv/
 venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
-# Dipendenze JavaScript
+# JAVASCRIPT
 node_modules/
+dist/
+build/
+.next/
+.nuxt/
+.output/
+.svelte-kit/
+.vite/
+.angular/
+.cache/
+coverage/
 
-# Configurazioni locali di VS Code
-.vscode/
+# PHP
+vendor/
+.phpunit.cache/
 
-# File locali con variabili d'ambiente
+# VARIABILI D'AMBIENTE
 .env
 .env.*
 !.env.example
 
-# File generati da Windows
+# LOG
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# CONFIGURAZIONI LOCALI DI VS CODE
+.vscode/
+
+# FILE TEMPORANEI DEGLI EDITOR
+*.swp
+*.swo
+*~
+
+# FILE GENERATI DAI SISTEMI OPERATIVI
+.DS_Store
 Thumbs.db
 Desktop.ini
-*.Identifier
